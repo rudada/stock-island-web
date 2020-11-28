@@ -61,7 +61,7 @@ class StockPrectionView extends React.Component {
                 </div>
                 <div className='background'>
                     <p><b>내일 주가 예측 59000원 (▼700  -0.33%)입니다.</b></p>
-        <button type='button' onClick={() => this.handleGraphOpen()}>{graphButtonText}</button>
+                    <button type='button' onClick={() => this.handleGraphOpen()}>{graphButtonText}</button>
                     <div className='graph'>
                     </div>
                 </div>
