@@ -10,6 +10,7 @@ import Weekly from './containers/Weekly';
 import Mypage from './containers/Mypage';
 import Login from './containers/Login';
 import Search from './containers/Search';
+import StockItemDetails from './containers/StockItemDetails';
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Nav.Link href="/weekly">주간평가</Nav.Link>
                     <Nav.Link href="/mypage">마이페이지</Nav.Link>
                     <Nav.Link href="/login">로그인</Nav.Link>
+                    <Nav.Link href="/details">상세페이지(테스트)</Nav.Link>
                 </Nav>
             </Navbar>
 
@@ -31,6 +33,7 @@ function App() {
                 <Route exact path="/mypage" component={Mypage} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/search" component={Search} />
+                <Route exact path="/details" component={StockItemDetails} />
             </div>
         </Router>
     )
