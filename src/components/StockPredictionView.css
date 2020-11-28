@@ -1,0 +1,36 @@
+.wrapper {
+    margin: auto;
+    width: 50%;
+}
+
+.foreground {
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    z-index: 2;
+    text-align: center;
+}
+
+.foreground p{
+    color: black;
+}
+
+.background {
+    filter: blur(4px);
+    position: relative;
+    width:500px; 
+    height:100px; 
+    background:white;
+    z-index: 1;
+}
+
+.background p{
+    color: black;
+}
+
+.graph {
+    width:500px;
+    height:400px;
+    background:yellow;
+    display: none;
+}
