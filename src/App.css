@@ -1,18 +1,27 @@
+* {
+    color: white;
+}
 .wrapper {
     text-align: center;
     margin: 0 auto;
-    width: 90%;
+    width: 70%;
 }
 body {
-    background-color: black;
-    color: white;
+    background-color: black !important;
+}
+
+.searchbar {
+    margin:20px;
+}
+.content_search .search_input{
+    display: inline;
 }
 
 .content_home .title {
     font-size: 80px;
     text-align: center;
-    color: white;
 }
-.search_input{
+.content_search .title {
     display: inline;
+    margin-right: 10px;
 }
