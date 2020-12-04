@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import StockItemInfo from '../components/StockItemInfo';
 import StockItemGraph from '../components/StockItemGraph';
 import { MDBIcon } from "mdbreact";
-import './StockItem.css';
 
 // get data : description, graph data
 class StockItem extends Component {
@@ -17,7 +16,6 @@ class StockItem extends Component {
 
   componentDidMount() {
     this._getData();
-    console.log(this.state.description);
   }
 
   _getData() {
@@ -39,27 +37,31 @@ class StockItem extends Component {
     })
   }
 
-  bookmarkClick(){
-    alert("즐겨찾기ㅣ");
+  bookmarkClick() {
+    this.setState({
+      isMarked : !this.state.isMarked
+    })
+  }
+
+  _renderStar() {
+    if(this.state.isMarked) return (<MDBIcon icon="star"  className="amber-text star"  onClick={this.bookmarkClick.bind(this)}/>);
+    else return(<MDBIcon far icon="star" className="amber-text star" onClick={this.bookmarkClick.bind(this)} />);
   }
 
   render() {
-    const { isMarked, description, graphs } = this.state;
-    
+    const { description, graphs } = this.state;
+
     return (
       <div className="stockitem">
-        <div className="h_company">
-        <MDBIcon far icon="star" className = "amber-text star" size="1g" onClick={this.bookmarkClick}/>
-        {/* <MDBIcon icon="star" /> */}
-        <StockItemInfo
-          stockid={description.F_STOCK_LISTED_COMPANY_CD}
-          name={description.F_STOCK_LISTED_COMPANY_NAME}
-          section={description.F_STOCK_LISTED_COMPANY_SECTION}
-          price={description.PRICE}
-          price_change={description.PRICE_CHANGE}
-          rate={description.RATE + "%"}></StockItemInfo>
-          </div>
-{/* 
+          <StockItemInfo
+            _renderStar={this._renderStar.bind(this)}
+            stockid={description.F_STOCK_LISTED_COMPANY_CD}
+            name={description.F_STOCK_LISTED_COMPANY_NAME}
+            section={description.F_STOCK_LISTED_COMPANY_SECTION}
+            price={description.PRICE}
+            price_change={description.PRICE_CHANGE}
+            rate={description.RATE + "%"}></StockItemInfo>
+        {/* 
         <StockItemGraph
           graph_day={graphs[0]}
           graph_week={graphs[1]}

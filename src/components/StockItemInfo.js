@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol} from "mdbreact";
+import './StockItemInfo.css';
 
 
-function StockItemInfo({ stockid, name, section, price, price_change, rate }) {
+function StockItemInfo({ _renderStar, stockid, name, section, price, price_change, rate }) {
 
   return (
     <MDBContainer className="stockitem_info">
-      <MDBRow>
+      {_renderStar()}
+      <MDBRow className="h_company">
         <MDBCol md="7"><ItemDescription stockid={stockid} name={name} section={section}></ItemDescription></MDBCol>
         <MDBCol md="5"><ItemRateInfo price={price} price_change={price_change} rate={rate}></ItemRateInfo></MDBCol>
       </MDBRow>

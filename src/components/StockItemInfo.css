@@ -1,14 +1,17 @@
-.stockitem .h_company {
+.stockitem_info {
     background-color:#2E2E2E;
     padding: 10px;
     border-radius: 30px;
 }
-.stockitem .h_company * {
+.stockitem_info * {
     vertical-align: middle;
 }
-.stockitem .stockitem_info {
-    display: inline-block;
-    width: 90%;
+.stockitem_info .star {
+    margin-right: 10px;
+}
+.stockitem_info .h_company {
+ width: 90%;
+ display: inline-flex
 }
 
 .stockitem_info .info_description {
