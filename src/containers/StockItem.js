@@ -60,12 +60,14 @@ class StockItem extends Component {
             section={description.F_STOCK_LISTED_COMPANY_SECTION}
             price={description.PRICE}
             price_change={description.PRICE_CHANGE}
-            rate={description.RATE + "%"}></StockItemInfo>
+            rate={description.RATE}></StockItemInfo>
         {/* 
         <StockItemGraph
           graph_day={graphs[0]}
           graph_week={graphs[1]}
           graph_month={graphs[2]}></StockItemGraph> */}
+
+          <StockItemGraph></StockItemGraph>
       </div>
     );
   }

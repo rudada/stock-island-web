@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { MDBContainer, MDBRow, MDBCol} from "mdbreact";
 import './StockItemInfo.css';
-
 
 function StockItemInfo({ _renderStar, stockid, name, section, price, price_change, rate }) {
 
@@ -32,9 +32,19 @@ function ItemRateInfo({ price, price_change, rate }) {
     <div className="info_rate">
       <h4>{price}</h4>
       <h4>{price_change}</h4>
-      <h4>{rate}</h4>
+      <h4>{rate + "%"}</h4>
     </div>
   )
+}
+
+StockItemInfo.propTypes = {
+  _renderStar : PropTypes.func.isRequired,
+  // stockid : PropTypes.string.isRequired,
+  // name : PropTypes.string.isRequired, 
+  // section : PropTypes.string.isRequired, 
+  // price : PropTypes.number.isRequired, 
+  // price_change : PropTypes.number.isRequired, 
+  // rate : PropTypes.number.isRequired
 }
 
 export default StockItemInfo;

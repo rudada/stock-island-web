@@ -1,78 +1,34 @@
+import React, { useState } from "react";
+import { Tab, Tabs } from "react-bootstrap";
+import './StockItemGraph.css';
 
-// import React, { Component } from "react";
-//   import { MDBContainer, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink } from "mdbreact";
+function StockItemGraph() {
+  const [key, setKey] = useState('daily');
 
-//   class TabsDefault extends Component {
-//     state = {
-//       activeItem: "1"
-//     };
+  return (
+    <Tabs
+      className="stockitem_graph"
+      id="controlled-tab-example"
+      activeKey={key}
+      onSelect={(k) => setKey(k)}>
 
-//     toggle = tab => e => {
-//       if (this.state.activeItem !== tab) {
-//         this.setState({
-//           activeItem: tab
-//         });
-//       }
-//     };
+      <Tab eventKey="daily" title="daily">
+        <ItemGraph num = {1}></ItemGraph>
+      </Tab>
+      <Tab eventKey="weekly" title="weekly">
+        <ItemGraph num = {2}></ItemGraph>
+      </Tab>
+    </Tabs>
+  );
+}
 
-//     render() {
-//       return (
-    //     <MDBContainer>
-    //     <MDBNav className="nav-tabs mt-5">
-    //       <MDBNavItem>
-    //         <MDBNavLink link to="#" active={this.state.activeItem === "1"} onClick={this.toggle("1")} role="tab" >
-    //           Home
-    //         </MDBNavLink>
-    //       </MDBNavItem>
-    //       <MDBNavItem>
-    //         <MDBNavLink link to="#" active={this.state.activeItem === "2"} onClick={this.toggle("2")} role="tab" >
-    //           Profile
-    //         </MDBNavLink>
-    //       </MDBNavItem>
-    //       <MDBNavItem>
-    //         <MDBNavLink link to="#" active={this.state.activeItem === "3"} onClick={this.toggle("3")} role="tab" >
-    //           Profile
-    //         </MDBNavLink>
-    //       </MDBNavItem>
-    //     </MDBNav>
-    //     <MDBTabContent activeItem={this.state.activeItem} >
-    //       <MDBTabPane tabId="1" role="tabpanel">
-    //         <p className="mt-2">
-    //           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    //           Nihil odit magnam minima, soluta doloribus reiciendis
-    //           molestiae placeat unde eos molestias. Quisquam aperiam,
-    //           pariatur. Tempora, placeat ratione porro voluptate odit
-    //           minima.
-    //         </p>
-    //       </MDBTabPane>
-    //       <MDBTabPane tabId="2" role="tabpanel">
-    //         <p className="mt-2">
-    //           Quisquam aperiam, pariatur. Tempora, placeat ratione porro
-    //           voluptate odit minima. Lorem ipsum dolor sit amet,
-    //           consectetur adipisicing elit. Nihil odit magnam minima,
-    //           soluta doloribus reiciendis molestiae placeat unde eos
-    //           molestias.
-    //         </p>
-    //         <p>
-    //           Quisquam aperiam, pariatur. Tempora, placeat ratione porro
-    //           voluptate odit minima. Lorem ipsum dolor sit amet,
-    //           consectetur adipisicing elit. Nihil odit magnam minima,
-    //           soluta doloribus reiciendis molestiae placeat unde eos
-    //           molestias.
-    //         </p>
-    //       </MDBTabPane>
-    //       <MDBTabPane tabId="3" role="tabpanel">
-    //         <p className="mt-2">
-    //           Quisquam aperiam, pariatur. Tempora, placeat ratione porro
-    //           voluptate odit minima. Lorem ipsum dolor sit amet,
-    //           consectetur adipisicing elit. Nihil odit magnam minima,
-    //           soluta doloribus reiciendis molestiae placeat unde eos
-    //           molestias.
-    //         </p>
-    //       </MDBTabPane>
-    //     </MDBTabContent>
-    //   </MDBContainer>
-//     );
-//   }
-// }
-// export default TabsDefault;
+function ItemGraph({num}) {
+  return(
+    <div>
+      {num}
+    </div>
+  );
+}
+
+
+export default StockItemGraph;
