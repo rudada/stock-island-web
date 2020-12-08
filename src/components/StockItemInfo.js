@@ -7,12 +7,14 @@ function StockItemInfo({ _renderStar, stockid, name, section, price, price_chang
 
   return (
     <MDBContainer className="stockitem_info">
-      {_renderStar()}
-      <MDBRow className="h_company">
-        <MDBCol md="7"><ItemDescription stockid={stockid} name={name} section={section}></ItemDescription></MDBCol>
+      
+      <MDBRow >
+        <MDBCol md="1">{_renderStar()}</MDBCol>
+        <MDBCol md="6" className="company_name"><ItemDescription stockid={stockid} name={name} section={section}></ItemDescription></MDBCol>
         <MDBCol md="5"><ItemRateInfo price={price} price_change={price_change} rate={rate}></ItemRateInfo></MDBCol>
       </MDBRow>
-    </MDBContainer>
+    
+  </MDBContainer>
   )
 
 }

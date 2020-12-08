@@ -15,11 +15,12 @@ class StockItem extends Component {
   }
 
   componentDidMount() {
-    this._getData();
+    this._getInfo();
+    this._getGraph();
   }
 
-  _getData() {
-    //get data here
+  _getInfo() {
+    //get info data here
 
     //test data
     this.setState({
@@ -35,6 +36,11 @@ class StockItem extends Component {
       },
       graphs: ["Graph1", "Graph2", "Graph3"],
     })
+  }
+
+  _getGraph() {
+    //get graph data here
+    
   }
 
   bookmarkClick() {

@@ -6,12 +6,8 @@
 .stockitem_info * {
     vertical-align: middle;
 }
-.stockitem_info .star {
-    margin-right: 10px;
-}
-.stockitem_info .h_company {
- width: 90%;
- display: inline-flex
+.stockitem_info .company_name {
+   padding-left: 0px;
 }
 
 .stockitem_info .info_description {
@@ -30,6 +26,7 @@
 
 .stockitem_info .info_rate {
     float: right;
+    margin-right: 20px;
 }
 .stockitem_info .info_rate h4{
     margin-left: 10px;
