@@ -52,7 +52,7 @@ class StockPrectionView extends React.Component {
         }
 
         return (
-            <div className='wrapper'>
+            <div className='stock-prediction-view'>
                 <div className='foreground'>
                     <div className='foreground notice'>
                         <p><b>30포인트를 지불하고 주가 예측을 확인하세요!</b></p>

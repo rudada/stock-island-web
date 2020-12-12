@@ -1,0 +1,23 @@
+.keyword-list-item {
+    color: black;
+}
+
+.searchbar-input {
+    width: 100%;
+    padding: 0px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.keyword-list {
+    overflow: auto;
+    background-color: white;
+    max-height:200px;
+}
+
+.searchbar-autocomplete {
+    margin: auto;
+    width: 500px;
+}

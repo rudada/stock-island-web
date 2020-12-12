@@ -1,6 +1,7 @@
-.wrapper {
+.stock-prediction-view {
     margin: auto;
-    width: 50%;
+    width: 500px;
+    height: 100px;
 }
 
 .foreground {
@@ -17,7 +18,7 @@
 
 .background {
     filter: blur(4px);
-    position: relative;
+    position: absolute;
     width:500px; 
     height:100px; 
     background:white;
