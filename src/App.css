@@ -4,8 +4,8 @@
     width: 90%;
 }
 body {
-    background-color: black;
-    color: white;
+    background-color: rgb(13,12,16);
+    color: rgb(255, 255, 255);
 }
 
 .content_home .title {
