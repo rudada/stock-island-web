@@ -12,7 +12,11 @@
     text-align: center;
 }
 
-.foreground p{
+.foreground .notice p b{
+    color: black;
+}
+
+.foreground .notice button{
     color: black;
 }
 
@@ -25,7 +29,11 @@
     z-index: 1;
 }
 
-.background p{
+.background p b{
+    color: black;
+}
+
+.background button {
     color: black;
 }
 

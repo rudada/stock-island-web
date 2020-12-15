@@ -9,12 +9,16 @@
     border-right-width: 2px;
     border-top-width: 2px;
     border-bottom-width: 2px;
+    color: black;
 }
 
 .keyword-list {
     overflow: auto;
     background-color: white;
     max-height:200px;
+    width: 500px;
+    position: absolute;
+    z-index: 1000;
 }
 
 .searchbar-autocomplete {
