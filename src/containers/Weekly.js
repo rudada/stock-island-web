@@ -1,99 +1,45 @@
 import React, {useState, useRef} from 'react';
 import Searchbar from '../components/Searchbar'
-import DatePicker, { registerLocale } from "react-datepicker";
-import getYear from "date-fns/getYear";
-import getMonth from "date-fns/getMonth";
-import ko from 'date-fns/locale/ko';
-registerLocale("ko", ko);
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
 
+import WeekRange from './WeekRange';
 
-function Weekly() {
-const [currentDate, setCurrentDate] = useState();
-const calendar = useRef(null);
+class Weekly extends React.Component {
+    
+    render() {
 
-const cancelDatePicker = () => {
-  setStartDate(currentDate);
-  calendar.current.setOpen(false);
-};
+        return (
 
-const openDatePicker = () => {
-  calendar.current.setOpen(true);
-};
+            <MDBContainer className="content_weekly">
 
-const closeDatePicker = () => {
-  setCurrentDate(startDate);
-  calendar.current.setOpen(false);
-};
-
-<DatePicker
-                withPortal
-                className="date date-record"
-                locale="ko"
-                selected={startDate}
-                minDate={minDate}
-                maxDate={maxDate}
-                dateFormat="yyyy.MM.dd(eee)"
-                useWeekdaysShort={true}
-                shouldCloseOnSelect={false}
-                useWeekdaysShort={true}
-                excludeDates={excludeDates}
-                ref={calendar}
-                onInputClick={() => openDatePicker()}
-                onChange={(date, event) => datePickHandler(date, event)}
-                renderCustomHeader={({
-                    date,
-                    prevMonthButtonDisabled,
-                    nextMonthButtonDisabled,
-                    decreaseMonth,
-                    increaseMonth,
-                }) => (
-                    <div
-                    style={{
-                        margin: 10,
-                        display: "flex",
-                        justifyContent: "center",
-                    }}
-                    >
-                    <div
-                        className="btn_month btn_month-prev"
-                        onClick={decreaseMonth}
-                        disabled={prevMonthButtonDisabled}
-                    >
-                        <img src="/static/images/arrow-black-left.png" />
-                    </div>
-                    <div className="month-day">
-                        {getYear(date)}.{months[getMonth(date)]}
-                    </div>
-
-                    <div
-                        className="btn_month btn_month-next"
-                        onClick={increaseMonth}
-                        disabled={nextMonthButtonDisabled}
-                    >
-                        <img src="/static/images/arrow-black-right.png" />
-                    </div>
-                    </div>
-                )}
-                >
-                <div className="button-container">
-                    <div className="btn_ctrl btn_ctrl-cancel" onClick={cancelDatePicker}>
-                    {" "}
-                    취소
-                    </div>
-                    <div className="btn_ctrl btn_ctrl-confirm" onClick={closeDatePicker}>
-                    선택
-                    </div>
-                </div>
-            </DatePicker>
-    return (
-        
-        <div  className="content_weekly">
-            <Searchbar></Searchbar>
-            Weekly
-            
-        </div>
-    );
-};
+            <MDBRow><br/><br/><br/></MDBRow>
+            <MDBRow>
+                <Searchbar></Searchbar>
+            </MDBRow>
+            <MDBRow><br/><br/><br/></MDBRow>
+            <MDBRow className="small_title">주간평가</MDBRow>
+            <MDBRow><br/></MDBRow>
+            <MDBRow align="left">
+                <MDBCol > <WeekRange /> </MDBCol>
+            </MDBRow>
+            <MDBRow><br/><br/></MDBRow>
+            <MDBRow align="left" className="box effect7">
+                <MDBCol className="week_comment"><br /><h3>&nbsp; &nbsp;카카오</h3><br /><br />&nbsp; &nbsp;긍정 코멘트 &nbsp; &nbsp; &nbsp;  돈있으면 바로 살거같아요 ~<br /><br />&nbsp; &nbsp;부정 코멘트 &nbsp; &nbsp; &nbsp;  카카오 뱅크 짱~<br /><br /><br /><br /><br /><br /><br /></MDBCol>
+            </MDBRow>
+            <MDBRow><br/><br/></MDBRow>
+            <MDBRow align="left" className="box effect7">
+                <MDBCol className="week_comment"><br /><h3>&nbsp; &nbsp;네이버</h3><br /><br />&nbsp; &nbsp;긍정 코멘트 &nbsp; &nbsp; &nbsp;  네이버에게 점령당했다.<br /><br />&nbsp; &nbsp;부정 코멘트 &nbsp; &nbsp; &nbsp;  구글짱<br /><br /><br /><br /><br /><br /><br /></MDBCol>
+            </MDBRow>
+            <MDBRow><br/><br/></MDBRow>
+            <MDBRow align="left" className="box effect7">
+                <MDBCol className="week_comment"><br /><h3>&nbsp; &nbsp;전기차</h3><br /><br />&nbsp; &nbsp;긍정 코멘트 &nbsp; &nbsp; &nbsp;  배터리 안 살수 가 없죠<br /><br />&nbsp; &nbsp;부정 코멘트 &nbsp; &nbsp; &nbsp;  달려달려<br /><br /><br /><br /><br /><br /><br /></MDBCol>
+            </MDBRow>
+            <MDBRow><br/><br/></MDBRow>
+                
+            </MDBContainer>
+        )
+    }
+}
 
 export default Weekly;
