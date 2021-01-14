@@ -1,0 +1,31 @@
+.profile {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.profile .profile_head {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.profile .profile_image { 
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+.profile .list {
+  background-color: black;
+}
+
+.profile .company_list {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.chip {
+  color: black;
+}
