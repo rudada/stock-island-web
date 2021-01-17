@@ -15,7 +15,7 @@ import StockItemDetails from './containers/StockItemDetails';
 function App() {
     return (
         <Router>
-            <Navbar bg="dark" variant="dark">
+            <Navbar bg="dark" variant="dark" scrolling="true" fixed="top">
                 <Navbar.Brand href="/">StockIsland</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="/board">게시판</Nav.Link>

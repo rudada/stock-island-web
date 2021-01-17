@@ -7,7 +7,8 @@
     width: 70%;
 }
 body {
-    background-color: black !important;
+    background-color: rgb(13,12,16)!important;
+    color: rgb(255, 255, 255); 
 }
 
 .searchbar {
@@ -15,6 +16,7 @@ body {
 }
 .content_search .search_input{
     display: inline;
+
 }
 
 .content_home .title {
@@ -23,5 +25,92 @@ body {
 }
 .content_search .title {
     display: inline;
+
     margin-right: 10px;
+
+}
+
+.small_title {
+    font-size: 30px;
+    text-align: left;
+    color: rgb(165,140,253);
+    font:bold;
+}
+
+.week_comment {
+    font-size: 20px;
+    text-anchor: start;
+    text-align: left;
+}
+
+
+.box {
+    background-color: rgb(13,12,16);
+}
+.effect7
+{
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(165,140,253, 0.3), 0 0 40px rgba(165,140,253, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(165,140,253, 0.3), 0 0 40px rgba(165,140,253, 0.1) inset;
+            box-shadow:0 1px 4px rgba(165,140,253, 0.3), 0 0 40px rgba(165,140,253, 0.1) inset;
+}
+.effect7:before, .effect7:after
+{
+  content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(165,140,253,0.8);
+    -moz-box-shadow:0 0 20px rgba(165,140,253,0.8);
+    box-shadow:0 0 20px rgba(165,140,253,0.8);
+    top:0;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.effect7:after
+{
+  right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+}
+
+
+.effect8
+{
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1) inset;
+            box-shadow:0 1px 4px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1) inset;
+}
+.effect8:before, .effect8:after
+{
+  content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(255, 255, 255,0.8);
+    -moz-box-shadow:0 0 20px rgba(255, 255, 255,0.8);
+    box-shadow:0 0 20px rgba(255, 255, 255,0.8);
+    top:0;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.effect8:after
+{
+  right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+
 }
