@@ -25,7 +25,8 @@ function TabPanel(props) {
   const panelStyle = {
     justifyContent: 'center',
     padding: '10px',
-    marginTop: '20px'
+    marginTop: '10px',
+    textAlign: 'center',
   }
 
   return (
@@ -37,7 +38,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <div>
-          {children}<br></br>
+          {children}
         </div>
       )}
     </div>
@@ -49,18 +50,19 @@ function Post(props) {
   return (
     <tr>
       <td width="10%">{no}</td>
-      <td width="60%">{title}</td>
+      <td width="60%"><a href="/board">{title}</a></td>
       <td width="20%">{date}</td>
       <td width="10%">{view}</td>
     </tr>
   )
 }
+
 function Comment(props) {
   const { no, comment, date } = props;
   return (
     <tr>
       <td width="10%">{no}</td>
-      <td width="70%">{comment}</td>
+      <td width="70%"><a href="/board">{comment}</a></td>
       <td width="20%">{date}</td>
     </tr>
   )
@@ -81,11 +83,11 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   tabs: {
-    '& > div > span': {
+    '& > div > span': {                 //밑줄
       display: 'flex',
       justifyContent: 'center',
       backgroundColor: 'transparent',
-      '& > span': {                         //밑줄
+      '& > span': {                         
         maxWidth: 40,
         width: '100%',
         backgroundColor: 'white',
@@ -95,12 +97,29 @@ const useStyles = makeStyles((theme) => ({
   table: {
     width: "100%",
     tableLayout: 'fixed',
-    '& > tbody > tr': {
-      maxHeight: '30px'
+    '& a' : {
+      color: 'white'
+    }, 
+    '& thead' : {
+      borderBottom: "1px solid white"
+    },
+  },
+  pagination: {
+    '& button': {
+      color: 'white'
+    },
+    '& button:focus': {
+      outline: 'none',
+    },
+    '& ul' : {
+      textAlign: 'center',
+      display: 'block',
+      '& li' : {
+        display: 'inline-block'
+      }
     }
 
   }
-
 }));
 
 
@@ -135,8 +154,7 @@ function PostList(props) {
   };
 
   return (
-    <div className="postlist">
-      <div className={classes.root} >
+      <div className={`post-list ${classes.root}`} >
         <Tabs className={classes.tabs} value={currentTab} onChange={tabChange} TabIndicatorProps={{ children: <span /> }}>
           <Tab className={classes.tab} label="작성한 게시글" />
           <Tab className={classes.tab} label="작성한 댓글" />
@@ -145,7 +163,12 @@ function PostList(props) {
         <TabPanel value={currentTab} index={0}>
           <table className={classes.table}>
             <thead>
-              <Post no="NO." title="TITLE" date="DATE" view="VIEWS"></Post>
+              <tr>
+                <td width="10%">NO</td>
+                <td width="60%">TITLE</td>
+                <td width="20%">DATE</td>
+                <td width="10%">VIEWS</td>
+              </tr>
             </thead>
             <tbody>
               {currentPosts.map((data, index) => {
@@ -155,13 +178,17 @@ function PostList(props) {
               })}
             </tbody>
           </table>
-          <Pagination count={totalPostpage} showFirstButton showLastButton page={currentPostpage} onChange={postpageChange} />
+          <Pagination className={classes.pagination} count={totalPostpage} showFirstButton showLastButton page={currentPostpage} onChange={postpageChange} />
         </TabPanel>
 
         <TabPanel value={currentTab} index={1}>
           <table className={classes.table}>
             <thead>
-              <Comment no="NO." comment="COMMENT" date="DATE"></Comment>
+              <tr>
+                <td width="10%">NO</td>
+                <td width="70%">COMMENT</td>
+                <td width="20%">DATE</td>
+              </tr>
             </thead>
             <tbody>
               {currentComments.map((data, index) => {
@@ -171,10 +198,9 @@ function PostList(props) {
               })}
             </tbody>
           </table>
-          <Pagination count={totalCommentpage} showFirstButton showLastButton page={currentCommentpage} onChange={commentpageChange} />
+          <Pagination className={classes.pagination} count={totalCommentpage} showFirstButton showLastButton page={currentCommentpage} onChange={commentpageChange} />
         </TabPanel>
       </div>
-    </div>
   );
 }
 
