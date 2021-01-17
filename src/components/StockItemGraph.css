@@ -2,7 +2,7 @@
     margin: 20px;
 }
 
-svg {
+.tab-content svg {
     background-color: black;
     overflow: visible !important;
     width: 800px;
