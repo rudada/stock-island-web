@@ -12,8 +12,6 @@ function Home() {
 
 
         <MDBContainer className="content_home">
-
-            <MDBRow><br/><br/><br/></MDBRow>
             <MDBRow>
                 <HomeSearchbar></HomeSearchbar>
             </MDBRow>

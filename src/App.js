@@ -25,7 +25,7 @@ function App() {
                     <Nav.Link href="/details">상세페이지(테스트)</Nav.Link>
                 </Nav>
             </Navbar>
-
+            <br/><br/><br/>
             <div className="wrapper">
                 <Route exact path="/" component={Home} />
                 <Route exact path="/board" component={Board} />
