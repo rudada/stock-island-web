@@ -1,35 +1,49 @@
 import React from 'react';
-import { Form, FormControl, Button } from 'react-bootstrap';
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import {
+  ThemeProvider,
+  makeStyles,
+  createMuiTheme,
+} from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import { gray } from '@material-ui/core/colors';
 
-function HomeSeachbar() {
-    return (
-        // <div className="searchbar">
-        //     <div className="title">STOCK ISLAND</div>
-        //     <Form inline className="search_input">
-        //         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        //         <Button href="/search" variant="outline-info">Search</Button>
-        //     </Form>
-        // </div>
-        <MDBContainer>
-          <MDBRow>
-            <MDBCol sm="2"></MDBCol>
-            <MDBCol sm="8" className="title">Stock island</MDBCol>
-            <MDBCol sm="2"></MDBCol>
-          </MDBRow>
-          <MDBRow>
-            <MDBCol sm="2"></MDBCol>
-            <MDBCol sm="8"  >
-    
-                  
-                        <input className="bar_style" type="text" placeholder="Search" aria-label="Search"/>
 
-            
-            </MDBCol>
-            <MDBCol sm="2"></MDBCol>
-          </MDBRow>
-        </MDBContainer>
-    )
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    background: 'linear-gradient(45deg, #F3AA88 30%, #A58CFD 90%)',
+    borderRadius: 3,
+  
+    color: 'white',
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  margin: {
+    margin: theme.spacing(0.5, 5),
+  },
+}));
+
+const theme = createMuiTheme({
+  palette: {
+    primary: gray,
+  },
+});
+
+export default function HomeSearchbar() {
+  const classes = useStyles();
+
+  return (
+    <form className={classes.root} noValidate>
+      <ThemeProvider theme={theme}>
+        <TextField
+          className={classes.margin}
+          label="기업검색"
+          id="mui-theme-provider-standard-input"
+          fullWidth
+          size='small'
+        />
+      </ThemeProvider>
+    </form>
+  );
 }
-
-export default HomeSeachbar;
