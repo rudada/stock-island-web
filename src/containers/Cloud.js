@@ -1,13 +1,13 @@
 import "d3-transition";
 import { select } from "d3-selection";
-import React from "react";
+import React, {Component} from "react";
 //import ReactDOM from "react-dom";
 import ReactWordcloud from "react-wordcloud";
 
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 
-import words from "./words.js";
+
 //import conversor from "./d3WC.js";
 import {ModalPage, modal15} from './Modal.js'
 
@@ -63,14 +63,53 @@ const options = {
   };
 
 
-function Cloud() {
+class Cloud extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      words : []  
+    };
+  }
+
+  componentDidMount() {
+    this._getWords();
+  }
+  
+  _getWords = async () => {
+    const data = await this._callApi(); 
+
+    //named_entity와 named_entity_count만 꺼낸당
+    const words =  data.map( row => {
+      let obj = {};
+      obj['text'] = row["NAMED_ENTITY"];
+      obj['value'] = row["NAMED_ENTITY_COUNT"];
+      return obj;
+    })
+
+    this.setState({
+      words
+    })
+  }
+
+  _callApi = () => {
+    return fetch("https://www.kinds.or.kr/api/categoryKeywords.do")
+      .then(potato => potato.json())
+      .then(json => json.categoryKeyword)
+      .catch(err => console.log(err))
+  }
+
+
+
+
+  render() {
   return (
     <div>
       <div >
-        <ReactWordcloud options={options} callbacks={callbacks} words={words}  />
+        <ReactWordcloud options={options} callbacks={callbacks} words={this.state.words}  />
       </div>
     </div>
   );
+  }
 }
 
 export default Cloud;
