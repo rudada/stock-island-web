@@ -1,108 +1,16 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+
 import { pink } from "@material-ui/core/colors";
 import Pagination from "@material-ui/lab/Pagination";
-
-
-// const StyledTabs = withStyles({
-//   indicator: {
-//     display: 'flex',
-//     justifyContent: 'center',
-//     backgroundColor: 'transparent',
-//     '& > span': {                         //밑줄
-//       maxWidth: 40,
-//       width: '100%',
-//       backgroundColor: 'white',
-//     },
-//   },
-// })((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
-
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  const panelStyle = {
-    justifyContent: 'center',
-    padding: '10px',
-    marginTop: '10px',
-    textAlign: 'center',
-  }
-
-  return (
-    <div
-      hidden={value !== index}
-      id={`tabpanel_${index}`}
-      {...other}
-      style={panelStyle}
-    >
-      {value === index && (
-        <div>
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function Post(props) {
-  const { no, title, date, view } = props;
-  return (
-    <tr>
-      <td width="10%">{no}</td>
-      <td width="60%"><a href="/board">{title}</a></td>
-      <td width="20%">{date}</td>
-      <td width="10%">{view}</td>
-    </tr>
-  )
-}
-
-function Comment(props) {
-  const { no, comment, date } = props;
-  return (
-    <tr>
-      <td width="10%">{no}</td>
-      <td width="70%"><a href="/board">{comment}</a></td>
-      <td width="20%">{date}</td>
-    </tr>
-  )
-}
+import TabComponent from '../common/TabComponent'
+import ListComponent from '../common/ListComponent'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: pink['500'],
     borderRadius: 4,
     marginBottom: 10,
-  },
-  tab: {
-    '&:active': {
-      outline: 'none',
-    },
-    '&:focus': {
-      outline: 'none',
-    }
-  },
-  tabs: {
-    '& > div > span': {                 //밑줄
-      display: 'flex',
-      justifyContent: 'center',
-      backgroundColor: 'transparent',
-      '& > span': {                         
-        maxWidth: 40,
-        width: '100%',
-        backgroundColor: 'white',
-      }
-    }
-  },
-  table: {
-    width: "100%",
-    tableLayout: 'fixed',
-    '& a' : {
-      color: 'white'
-    }, 
-    '& thead' : {
-      borderBottom: "1px solid white"
-    },
   },
   pagination: {
     '& button': {
@@ -111,24 +19,21 @@ const useStyles = makeStyles((theme) => ({
     '& button:focus': {
       outline: 'none',
     },
-    '& ul' : {
+    '& ul': {
       textAlign: 'center',
       display: 'block',
-      '& li' : {
+      '& li': {
         display: 'inline-block'
       }
     }
-
   }
 }));
-
-
 
 function PostList(props) {
   const { posts, comments } = props;
   const classes = useStyles();
 
-  const [currentTab, setTab] = useState(0);
+  //현재 페이지번호
   const [currentPostpage, setPostpage] = useState(1);
   const [currentCommentpage, setCommentpage] = useState(1);
 
@@ -139,13 +44,10 @@ function PostList(props) {
   const totalPostpage = Math.ceil(posts.length / LIMIT);
   const totalCommentpage = Math.ceil(comments.length / LIMIT);
 
+  //현재 페이지에서 보여주는 내용들
   const currentPosts = posts.slice(LIMIT * (currentPostpage - 1), LIMIT * currentPostpage);
   const currentComments = comments.slice(LIMIT * (currentCommentpage - 1), LIMIT * currentCommentpage);
 
-
-  const tabChange = (event, newValue) => {
-    setTab(newValue);
-  };
   const postpageChange = (event, newValue) => {
     setPostpage(newValue);
   };
@@ -154,53 +56,18 @@ function PostList(props) {
   };
 
   return (
-      <div className={`post-list ${classes.root}`} >
-        <Tabs className={classes.tabs} value={currentTab} onChange={tabChange} TabIndicatorProps={{ children: <span /> }}>
-          <Tab className={classes.tab} label="작성한 게시글" />
-          <Tab className={classes.tab} label="작성한 댓글" />
-        </Tabs>
-
-        <TabPanel value={currentTab} index={0}>
-          <table className={classes.table}>
-            <thead>
-              <tr>
-                <td width="10%">NO</td>
-                <td width="60%">TITLE</td>
-                <td width="20%">DATE</td>
-                <td width="10%">VIEWS</td>
-              </tr>
-            </thead>
-            <tbody>
-              {currentPosts.map((data, index) => {
-                return (
-                  <Post key={index} no={data['no']} title={data['title']} date={data['date']} view={data['view']}></Post>
-                )
-              })}
-            </tbody>
-          </table>
+    <div className={`post-list ${classes.root}`} >
+      <TabComponent tabNames={["작성한 게시글", "작성한 댓글"]}>
+        <div>
+          <ListComponent columnSize={4} columnNames={["NO", "TITLE", "DATE", "VIEWS"]} contents={currentPosts}></ListComponent>
           <Pagination className={classes.pagination} count={totalPostpage} showFirstButton showLastButton page={currentPostpage} onChange={postpageChange} />
-        </TabPanel>
-
-        <TabPanel value={currentTab} index={1}>
-          <table className={classes.table}>
-            <thead>
-              <tr>
-                <td width="10%">NO</td>
-                <td width="70%">COMMENT</td>
-                <td width="20%">DATE</td>
-              </tr>
-            </thead>
-            <tbody>
-              {currentComments.map((data, index) => {
-                return (
-                  <Comment key={index} no={data['no']} comment={data['comment']} date={data['date']}></Comment>
-                )
-              })}
-            </tbody>
-          </table>
+        </div>
+        <div>
+          <ListComponent columnSize={3} columnNames={["NO", "COMMENT", "DATE"]} contents={currentComments}></ListComponent>
           <Pagination className={classes.pagination} count={totalCommentpage} showFirstButton showLastButton page={currentCommentpage} onChange={commentpageChange} />
-        </TabPanel>
-      </div>
+        </div>
+      </TabComponent>
+    </div>
   );
 }
 

@@ -53,9 +53,9 @@ const useStyles = makeStyles((theme) => ({
 
 function TabComponent(props) {
     const classes = useStyles();
+    const { tabNames, children } = props;
+    //tabnames => 탭 이름들, children => tabpanel에 들어갈 자식 컴포넌트들
 
-    const { tabNames, childs } = props;
-    //tabnames => 탭 이름들, childs => tabpanel에 들어갈 컴포넌트들
     const [currentTab, setTab] = useState(0);
     const tabChange = (event, newValue) => {
         setTab(newValue);
@@ -64,10 +64,10 @@ function TabComponent(props) {
     return (
         <div>
             <Tabs  className={classes.tabs} value={currentTab} onChange={tabChange} TabIndicatorProps={{ children: <span /> }}>
-                {tabNames.map( (name, key) => <Tab className={classes.tab} key={key} label = {name}></Tab>)}
+                {tabNames.map((name, key) => <Tab className={classes.tab} key={key} label = {name}></Tab>)}
             </Tabs>
 
-            {childs.map((child, key) => <TabPanel value={currentTab} key={key} index={key}> {child} </TabPanel>)}
+            {children.map((child, key) => <TabPanel value={currentTab} key={key} index={key}> {child} </TabPanel>)}
         </div>
     )
 

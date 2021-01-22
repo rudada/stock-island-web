@@ -62,18 +62,12 @@ function ItemGraph(props) {
 function StockItemGraph() {
   return (
     <div className='stockitem_graph'>
-      <TabComponent tabNames={['weekly', 'monthly']}
-        childs={
-          [<ItemGraph data={[200, 50, 25, 100, 30, 40, 280]}></ItemGraph>,
-          <ItemGraph data={[100, 400, 400, 100, 30, 40, 280]}></ItemGraph>]
-        }>
+      <TabComponent tabNames={['weekly', 'monthly']}>
+        <ItemGraph data={[200, 50, 25, 100, 30, 40, 280]}></ItemGraph>
+        <ItemGraph data={[100, 400, 400, 100, 30, 360, 20]}></ItemGraph>
       </TabComponent>
     </div>
   );
 }
-
-
-
-
 
 export default StockItemGraph;
