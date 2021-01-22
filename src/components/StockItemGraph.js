@@ -1,110 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { select, line, curveLinear, axisBottom, scaleLinear, axisLeft } from "d3";
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import './StockItemGraph.css';
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  const panelStyle = {
-    justifyContent: 'center',
-    padding: '10px',
-    marginTop: '10px',
-    textAlign: 'center',
-  }
-
-  return (
-    <div
-      hidden={value !== index}
-      id={`tabpanel_${index}`}
-      {...other}
-      style={panelStyle}
-    >
-      {value === index && (
-        <div>
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    // backgroundColor: pink['500'],
-    borderRadius: 4,
-    marginBottom: 10,
-  },
-  tab: {
-    '&:active': {
-      outline: 'none',
-    },
-    '&:focus': {
-      outline: 'none',
-    }
-  },
-  tabs: {
-    '& > div > span': {                 //밑줄
-      display: 'flex',
-      justifyContent: 'center',
-      backgroundColor: 'transparent',
-      '& > span': {                         
-        maxWidth: 40,
-        width: '100%',
-        backgroundColor: 'white',
-      }
-    }
-  }
-  
-}));
-
-function StockItemGraph() {
-  // const [key, setKey] = useState('daily');
-
-  const classes = useStyles();
+import TabComponent from './common/TabComponent'
 
 
-  const [currentTab, setTab] = useState(0);
-  const tabChange = (event, newValue) => {
-    setTab(newValue);
-  };
-
-  return (
-    // <Tabs
-    //   className="stockitem_graph"
-    //   id="controlled-tab-example"
-    //   activeKey={key}
-    //   onSelect={(k) => setKey(k)}>
-
-    //   <Tab eventKey="daily" title="daily">
-    //     <ItemGraph num={1}></ItemGraph>
-    //   </Tab>
-    //   <Tab eventKey="weekly" title="weekly">
-    //     <ItemGraph num={2}></ItemGraph>
-    //   </Tab>
-    // </Tabs>
-    <div className={`stockitem_graph ${classes.root}`} >
-      <Tabs className={classes.tabs} value={currentTab} onChange={tabChange} TabIndicatorProps={{ children: <span /> }}>
-        <Tab className={classes.tab} label="Weekly" />
-        <Tab className={classes.tab} label="Daily" />
-      </Tabs>
-
-      <TabPanel value={currentTab} index={0}>
-        <ItemGraph num={1}></ItemGraph>
-      </TabPanel>
-
-      <TabPanel value={currentTab} index={1}>
-        <ItemGraph num={2}></ItemGraph>
-      </TabPanel>
-    </div>
-  );
-}
-
-const data = [1, 5, 20, 25, 100, 30, 40, 3];
-
-function ItemGraph({ num }) {
+function ItemGraph(props) {
   const svgRef = useRef();
+  const {data} = props;
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -155,6 +57,23 @@ function ItemGraph({ num }) {
     </svg>
   );
 }
+
+
+function StockItemGraph() {
+  return (
+    <div className='stockitem_graph'>
+      <TabComponent tabNames={['weekly', 'monthly']}
+        childs={
+          [<ItemGraph data={[200, 50, 25, 100, 30, 40, 280]}></ItemGraph>,
+          <ItemGraph data={[100, 400, 400, 100, 30, 40, 280]}></ItemGraph>]
+        }>
+      </TabComponent>
+    </div>
+  );
+}
+
+
+
 
 
 export default StockItemGraph;
