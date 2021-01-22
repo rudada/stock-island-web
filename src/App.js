@@ -1,7 +1,7 @@
-import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse} from "mdbreact";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css'
 
 import Home from './containers/Home';
@@ -13,19 +13,54 @@ import Search from './containers/Search';
 import StockItemDetails from './containers/StockItemDetails';
 
 function App() {
+    const [isOpen, setOpen] = useState(false);
+    const toggleCollapse = () => {
+        setOpen(!isOpen)
+    }
+
     return (
         <Router>
-            <Navbar bg="dark" variant="dark" scrolling="true" fixed="top">
-                <Navbar.Brand href="/">StockIsland</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link href="/board">게시판</Nav.Link>
-                    <Nav.Link href="/weekly">주간평가</Nav.Link>
-                    <Nav.Link href="/mypage">마이페이지</Nav.Link>
-                    <Nav.Link href="/login">로그인</Nav.Link>
-                    <Nav.Link href="/details">상세페이지(테스트)</Nav.Link>
-                </Nav>
-            </Navbar>
-            <br/><br/><br/>
+            <MDBNavbar color="default-color" dark expand="md">
+                <MDBNavbarBrand>
+                    <strong className="white-text">StockIsland</strong>
+                </MDBNavbarBrand>
+                <MDBNavbarToggler onClick={toggleCollapse} />
+                <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
+                    <MDBNavbarNav left>
+                        <MDBNavItem active>
+                            <Link to="/">Home</Link>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <Link to="/board">Board</Link>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <Link to="/weekly">Weekly</Link>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <Link to="/mypage">Mypage</Link>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <Link to="/login">Login</Link>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <Link to="/search">Search</Link>
+                        </MDBNavItem><MDBNavItem>
+                            <Link to="/details">Details</Link>
+                        </MDBNavItem>
+                    </MDBNavbarNav>
+                    <MDBNavbarNav right>
+                        <MDBNavItem>
+                            {/* <MDBFormInline waves> */}
+                            <div className="md-form my-0">
+                                <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                            </div>
+                            {/* </MDBFormInline> */}
+                        </MDBNavItem>
+                    </MDBNavbarNav>
+                </MDBCollapse>
+            </MDBNavbar>
+
+
             <div className="wrapper">
                 <Route exact path="/" component={Home} />
                 <Route exact path="/board" component={Board} />
