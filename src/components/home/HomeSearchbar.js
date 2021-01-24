@@ -24,18 +24,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const theme = createMuiTheme({
-  palette: {
-    primary: gray,
-  },
-});
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: gray,
+//   },
+// });
 
-export default function HomeSearchbar() {
+export default function HomeSearchbar(props) {
+  const {children} = props;
   const classes = useStyles();
 
   return (
-    <form className={classes.root} noValidate>
-      <ThemeProvider theme={theme}>
+    <div className={classes.root} noValidate>
+      {/* <ThemeProvider theme={theme}> */}
         <TextField
           className={classes.margin}
           label="기업검색"
@@ -43,7 +44,9 @@ export default function HomeSearchbar() {
           fullWidth
           size='small'
         />
-      </ThemeProvider>
-    </form>
+        {children}
+        
+      {/* </ThemeProvider> */}
+    </div>
   );
 }
