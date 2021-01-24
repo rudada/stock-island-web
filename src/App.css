@@ -1,16 +1,19 @@
 * {
-    color: white !important;
+    color: white ; /* 드롭다운 글씨 안보여서 !important 지움 */
 }
 .wrapper {
     text-align: center;
     margin: 0 auto;
     width: 70%;
+    padding-top: 100px; /* navbar에 가려진 부분 padding으로 내리기 */
 }
 body {
     background-color: rgb(13,12,16)!important;
-    color: rgb(255, 255, 255); 
+    color: rgb(255, 255, 255);
 }
-
+.navbar {
+    color:rgb(13,12,16);
+}
 .searchbar {
     margin:20px;
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css'; 
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse} from "mdbreact";
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse,MDBDropdown,MDBDropdownToggle,MDBDropdownMenu,MDBDropdownItem} from "mdbreact";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { IoMdPerson } from "react-icons/io";
 import './App.css'
 
 import Home from './containers/Home';
@@ -20,41 +21,48 @@ function App() {
 
     return (
         <Router>
-            <MDBNavbar color="default-color" dark expand="md">
-                <MDBNavbarBrand>
-                    <strong className="white-text">StockIsland</strong>
+            <MDBNavbar className="navbar" dark expand="md" fixed="top">
+                <MDBNavbarBrand href="/">
+                    <strong className="white-text"> StockIsland </strong>
                 </MDBNavbarBrand>
                 <MDBNavbarToggler onClick={toggleCollapse} />
                 <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
+                    
                     <MDBNavbarNav left>
-                        <MDBNavItem active>
-                            <Link to="/">Home</Link>
+                        
+                        <MDBNavItem active style={{ marginTop: "15px"}}>
+                            <Link to="/board" style={{color:"white"}}> &emsp;Board&emsp; </Link>
+                        </MDBNavItem>
+                        <MDBNavItem style={{ marginTop: "15px" }}>
+                            <Link to="/weekly" style={{color:"white"}}> Weekly&emsp; </Link>
+                        </MDBNavItem>
+                        <MDBNavItem style={{ marginTop: "15px" }}>
+                            <Link to="/details" style={{color:"white"}}> Details&emsp;&emsp; </Link>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <Link to="/board">Board</Link>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <Link to="/weekly">Weekly</Link>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <Link to="/mypage">Mypage</Link>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <Link to="/login">Login</Link>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <Link to="/details">Details</Link>
-                        </MDBNavItem>
-                    </MDBNavbarNav>
-                    <MDBNavbarNav right>
-                        <MDBNavItem>
-                            {/* <MDBFormInline waves> */}
                             <div className="md-form my-0">
                                 <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
                             </div>
-                            {/* </MDBFormInline> */}
                         </MDBNavItem>
                     </MDBNavbarNav>
+                    
+                    <MDBNavbarNav right>
+                        <MDBNavItem>
+                        <MDBDropdown>
+                            <MDBDropdownToggle nav caret>
+                                <IoMdPerson></IoMdPerson>
+                            </MDBDropdownToggle>
+                            <MDBDropdownMenu className="dropdown-default" >
+                                <MDBDropdownItem href="/mypage" >Mypage</MDBDropdownItem>
+                                <MDBDropdownItem href="/login">Login</MDBDropdownItem>
+                                <MDBDropdownItem href="#!">Logout</MDBDropdownItem>
+                                <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                            </MDBDropdownMenu>
+
+                        </MDBDropdown>
+                        </MDBNavItem>
+                    </MDBNavbarNav>
+
                 </MDBCollapse>
             </MDBNavbar>
 
