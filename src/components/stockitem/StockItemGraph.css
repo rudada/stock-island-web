@@ -5,7 +5,7 @@
 .stockitem_graph svg {
     background-color: black;
     overflow: visible !important;
-    width: 800px;
-    height: 450px;
+    width: 500px;
+    height: 300px;
     margin: 30px;
 }
