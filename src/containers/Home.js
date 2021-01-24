@@ -13,7 +13,14 @@ function Home() {
 
         <MDBContainer className="content_home">
             <MDBRow>
-                <HomeSearchbar></HomeSearchbar>
+            <MDBCol sm="2"></MDBCol>
+            <MDBCol sm="8" className="title">Stock island</MDBCol>
+            <MDBCol sm="2"></MDBCol>
+          </MDBRow>
+            <MDBRow>
+            <MDBCol></MDBCol>
+                <MDBCol size="10"> <HomeSearchbar></HomeSearchbar></MDBCol>
+                <MDBCol></MDBCol>
             </MDBRow>
             <MDBRow><br/><br/><br/></MDBRow>
             <MDBRow >
