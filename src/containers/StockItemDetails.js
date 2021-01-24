@@ -1,5 +1,5 @@
 import React from 'react';
-import StockPrectionView from '../components/StockPredictionView';
+import StockPrectionView from '../components/stockitem/StockPredictionView';
 import Autocomplete from '../components/Autocomplete';
 
 function StockItemDetails() {

@@ -43,8 +43,6 @@ function App() {
                             <Link to="/login">Login</Link>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <Link to="/search">Search</Link>
-                        </MDBNavItem><MDBNavItem>
                             <Link to="/details">Details</Link>
                         </MDBNavItem>
                     </MDBNavbarNav>

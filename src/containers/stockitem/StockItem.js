@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import StockItemInfo from '../components/StockItemInfo';
-import StockItemGraph from '../components/StockItemGraph';
+import StockItemInfo from '../../components/stockitem/StockItemInfo';
+import StockItemGraph from '../../components/stockitem/StockItemGraph';
 import { MDBIcon } from "mdbreact";
 
 // get data : description, graph data
@@ -67,11 +67,6 @@ class StockItem extends Component {
             price={description.PRICE}
             price_change={description.PRICE_CHANGE}
             rate={description.RATE}></StockItemInfo>
-        {/* 
-        <StockItemGraph
-          graph_day={graphs[0]}
-          graph_week={graphs[1]}
-          graph_month={graphs[2]}></StockItemGraph> */}
 
           <StockItemGraph></StockItemGraph>
       </div>

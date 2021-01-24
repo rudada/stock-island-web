@@ -1,12 +1,16 @@
 import React from 'react';
 import Searchbar from '../components/Searchbar';
-import StockItem from './StockItem';
+import StockItem from './stockitem/StockItem';
+import StockPrectionView from '../components/stockitem/StockPredictionView';
+import StockItemArticle from './stockitem/StockItemArticle';
 
 function Search() {
     return (
         <div className="content_search">
             <Searchbar></Searchbar>
             <StockItem stockid="005930"></StockItem>
+            <StockPrectionView></StockPrectionView>
+            <StockItemArticle></StockItemArticle>
         </div>
     )
 }
