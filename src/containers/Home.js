@@ -19,7 +19,7 @@ function Home() {
             </MDBRow>
             <MDBRow>
                 <MDBCol></MDBCol>
-                <MDBCol size="10"><Autocomplete from="Home"></Autocomplete></MDBCol>
+                <MDBCol size="10"><Autocomplete><HomeSearchbar></HomeSearchbar></Autocomplete></MDBCol>
                 <MDBCol></MDBCol>
             </MDBRow>
             {/* <MDBRow>
