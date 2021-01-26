@@ -1,7 +1,7 @@
 
 import React, { cloneElement } from 'react';
 import ReactDOM from 'react-dom';
-import request from 'axios';
+// import request from 'axios';
 
 const fD = ReactDOM.findDOMNode;
 
@@ -9,44 +9,36 @@ class Autocomplete extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            keywords: [],
             filteredKeywords: [],
-            currentKeyword: ''
         };
         this.filter = this.filter.bind(this);
+        this._callAPI = this._callAPI.bind(this);
     }
 
-    componentDidMount() {
+    filter = async(event) => {
+        const data = (await this._callAPI(event.target.value)) || new Array();      //일치하는 검색어 없을 경우 빈 Array로 설정
 
-        let config = {
-            baseURL: 'https://pcenpicjxi.execute-api.ap-northeast-1.amazonaws.com/Prod/search?keyword=',
-            method: 'GET',
-        }
-
-        request(config)
-            .then(response => response.data)
-            .then(body => {
-                if (!body) {
-                    return console.error('Failed to load')
-                }
-                this.setState({ keywords: body.search })
-            })
-            .catch(console.error)
-    }
-
-    filter(event) {
         this.setState({
-            currentKeyword: event.target.value,
-            filteredKeywords: this.state.keywords.filter(
-                function (keyword, index, list) {
-                    if (event.target.value == '') { return false; }
-                    return (event.target.value.toLowerCase() === keyword.F_STOCK_LISTED_COMPANY_NAME.toLowerCase().substr(0, event.target.value.length))
-                }
-            )}
-            , () => { }                                     //setState 함수의 비동기 성질 때문에 callback 함수를 넣어서 delay 막았당
+            filteredKeywords: data
+            }
+            , () => {}                                                              //setState 함수의 비동기 성질 때문에 callback 함수를 넣어서 delay 막았당
         );
-
     }
+
+    _callAPI = (value) => {
+        if(!value) {return console.error('Failed to load');}
+
+        return fetch('https://qmj5oql835.execute-api.ap-northeast-1.amazonaws.com/api/search/' + value)
+          .then(response => response.json())
+          .then(json => json.body)
+          .then(body => JSON.parse(body))
+          .then(data => {
+              if(!data['search']) {
+                  return console.error('Failed to load')
+              }
+              return data['search']})
+          .catch(err => console.log(err))
+      }
 
     render() {
         const children = this.props.children
@@ -54,7 +46,6 @@ class Autocomplete extends React.Component {
             cloneElement(children, {
                 changeHandler: this.filter,
                 filteredKeywords: this.state.filteredKeywords,
-                currentKeyword: this.state.currentKeyword
             })
         );
     }

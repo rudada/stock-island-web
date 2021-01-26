@@ -6,22 +6,15 @@ import TabComponent from '../common/TabComponent'
 
 function ItemGraph(props) {
   const svgRef = useRef();
-  const {data} = props;
-  const max = Math.max(...data);
-  const min = Math.min(...data);
-  const date = [ "2021-01-03",
-  "2021-01-04",
-  "2021-01-05",
-  "2021-01-06" ,
-  "2021-01-07",
-  "2021-01-08",
-  "2021-01-09",]
+  const { price, date } = props;
+  const max = Math.max(...price);
+  const min = Math.min(...price);
 
   useEffect(() => {
     const svg = select(svgRef.current);
 
     const xScale = scaleLinear()              //x축 설정
-      .domain([0, data.length-1])           //x축 요소 범위
+      .domain([0, price.length - 1])           //x축 요소 범위
       .range([0, 500]);
     const yScale = scaleLinear()
       .domain([min, max])
@@ -29,8 +22,11 @@ function ItemGraph(props) {
 
 
     const xAxis = axisBottom(xScale)
-      .ticks(data.length/2)                     //ticks(눈금선)
-      .tickFormat((index) => date[index]);     
+      .ticks(7)                               //ticks(눈금선)
+      .tickFormat((index) => {
+        const element = new Date(date[index]);
+        return `${element.getFullYear()}-${element.getMonth()+1}-${element.getDate()}`
+      });
     const yAxis = axisLeft(yScale)
       .ticks(5);
     svg
@@ -50,14 +46,14 @@ function ItemGraph(props) {
 
     svg
       .selectAll(".line")
-      .data([data])                             //데이터와 바인딩
+      .data([price])                             //데이터와 바인딩
       .join("path")
       .attr("class", "line")
       .attr("d", (value) => Line(value))        //d(좌표값 속성) -> Line메쏘드로
       .attr("fill", "none")                     //채우기 없음
       .attr("stroke", "gray");                  //선색상
 
-  }, [data]);
+  }, [price]);
 
   return (
     <svg ref={svgRef}>
@@ -68,22 +64,35 @@ function ItemGraph(props) {
 }
 
 
-function StockItemGraph() {
-  const data1 = {
-    "2021-01-03" : 200,
-    "2021-01-04" : 50,
-    "2021-01-05" : 25,
-    "2021-01-06" : 100,
-    "2021-01-07" : 30,
-    "2021-01-08" : 40,
-    "2021-01-09" : 280,
-  }
+function StockItemGraph(props) {
+  const { totalGraph, quarterGraph} = props;
+
+  console.log(totalGraph, quarterGraph);
+
+  const total = totalGraph.reduce(
+    (result, row) => {
+      return([
+      [...(result[0] || []), row['date']],
+      [...(result[1] || []), row['price']]
+    ])},
+    new Array(2)
+  )
+
+  const quarter = quarterGraph.reduce(
+    (result, row) => {
+      return([
+      [...(result[0] || []), row['date']],
+      [...(result[1] || []), row['price']]
+    ])},
+    new Array(2)
+  )
+
 
   return (
     <div className='stockitem_graph'>
       <TabComponent tabNames={['weekly', 'monthly']}>
-        <ItemGraph data={[200, 50, 25, 100, 30, 40, 280]}></ItemGraph>
-        <ItemGraph data={[2500, 6000, 7000, 1000, 15000, 3000, 2000]}></ItemGraph>
+        <ItemGraph date ={total[0]} price={total[1]} ></ItemGraph>
+        <ItemGraph date ={quarter[0]} price={quarter[1]}></ItemGraph>
       </TabComponent>
     </div>
   );

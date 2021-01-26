@@ -84,7 +84,7 @@ class Cloud extends Component {
         obj['value'] = row["NAMED_ENTITY_COUNT"];
         return obj;
       });
-    console.log(words)
+    // console.log(words)
 
     this.setState({
       words

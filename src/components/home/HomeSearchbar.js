@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 // });
 
 function HomeSearchbar(props) {
-  const { changeHandler, filteredKeywords, currentKeyword } = props;
+  const { changeHandler, filteredKeywords} = props;
   const classes = useStyles();
 
 
@@ -54,7 +54,7 @@ function HomeSearchbar(props) {
           filteredKeywords.map(
             function (keyword, index, list) {
               return <div key={keyword.F_STOCK_LISTED_COMPANY_CD}>
-                <a className="keyword-list-item" href={'/search?keyword=' + keyword.name}>
+                <a className="keyword-list-item" href={'/search?keyword=' + keyword.F_STOCK_LISTED_COMPANY_CD}>
                   {keyword.F_STOCK_LISTED_COMPANY_NAME}
                 </a>
               </div>
