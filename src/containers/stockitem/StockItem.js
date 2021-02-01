@@ -2,20 +2,23 @@ import React, { Component } from 'react';
 import StockItemInfo from '../../components/stockitem/StockItemInfo';
 import StockItemGraph from '../../components/stockitem/StockItemGraph';
 import { MDBIcon } from "mdbreact";
-import axios from 'axios';
+import axios from "axios";
 
 // get data : description, graph data
 class StockItem extends Component {
   constructor(props) {
     super(props);
 
+    this.keyword = props.keyword;
     this.state = {
       isMarked: false,
       description: {},
     };
 
-    const url = location.href;
-    this.keyword = (url.slice(url.length - 6, url.length));
+    const today = new Date();
+    this.today = today;
+    this.oneYearAgo = new Date((new Date()).setFullYear(today.getFullYear() - 1));
+    this.threeMonthAgo = new Date((new Date()).setMonth(today.getMonth() - 3));
   }
 
 
@@ -24,51 +27,49 @@ class StockItem extends Component {
   }
 
   _getGraph = async () => {
-    //1년치 그래프
-    const data = await this._callAPI();
+    const totalData = await this._callAPI(this.oneYearAgo);
+    const quarterData = await this._callAPI(this.threeMonthAgo);
 
-    const totalGraph = data.map((row) => {
-      return ({
-        date: row['F_STOCK_TRANS_DATE'],
-        price: row['F_STOCK_DAY_CLOSING_PRICE']
-      })
-    });
-
-    const today = new Date();
-    const threeMonthAgo = new Date(today.setMonth(today.getMonth() - 3));                                   //3달 전 날짜 
-    const quarterGraph = totalGraph.filter((row) => new Date(row['date']) >= threeMonthAgo);                //3달 전까지의 가격 배열
+    const totalGraph = this.makeGraph(totalData);
+    const quarterGraph = this.makeGraph(quarterData);
 
     this.setState({
       totalGraph: totalGraph,
       quarterGraph: quarterGraph,
-      description: data[0]
     })
   }
 
-  _callAPI = () => {
-    const today = new Date();
-    const fromDate = new Date(today.setFullYear(today.getFullYear() - 1));
+  _callAPI = (date) => {
     return axios.post('https://qmj5oql835.execute-api.ap-northeast-1.amazonaws.com/api/graph',
-      { 'from_date': fromDate, 'end_date': new Date(), 'company_cd': this.keyword })
+      { 'from_date': date, 'end_date': this.today, 'company_cd': this.keyword })
       .then(response => response.data.body)
       .then(body => JSON.parse(body).data)
       .catch(console.error)
-
-    // this.setState({
-    //   isMarked: false,
-
-    //   description: {
-    //     F_STOCK_LISTED_COMPANY_NO: 332,
-    //     F_STOCK_LISTED_COMPANY_CD: "005930",
-    //     F_STOCK_LISTED_COMPANY_NAME: "삼성전자",
-    //     F_STOCK_LISTED_COMPANY_SECTION: "KOSPI",
-    //     PRICE: 59700,
-    //     PRICE_CHANGE: -200,
-    //     RATE: -0.33
-    //   },
-    //   graphs: ["Graph1", "Graph2", "Graph3"],
-    // })
   }
+
+  makeGraph(data) {
+    return data.reduce(
+      (result, row) => {
+        return([
+        [...(result[0] || []), row['F_STOCK_TRANS_DATE']],
+        [...(result[1] || []), row['F_STOCK_DAY_CLOSING_PRICE']]
+      ])},
+      new Array(2)
+    );
+  }
+
+  /*
+  data = {
+    [date: 01-22, price: 300],
+    [date: 01-23, price: 400],
+    [date: 01-24, price: 250],
+    ...,
+  }
+  data = {
+    {01-22, 01-23, 01-24, ...},
+    {300, 400, 250,  ...}
+  }
+  */
 
 
 
@@ -92,12 +93,14 @@ class StockItem extends Component {
           <div>
             <StockItemInfo
               _renderStar={this._renderStar.bind(this)}
-              stockid="stockid"
-              name="name"
-              section="section"
-              price={1111}
-              price_change="price_change"
-              rate="rate">
+              stockid={"qq"}
+              name={"as"}
+              // section={description[]}
+              // price={description[]}
+              section={"g"}
+              price={"gg"}
+              price_change={"111"}
+              rate={"111"}>
             </StockItemInfo>
             <StockItemGraph totalGraph={totalGraph} quarterGraph={quarterGraph}></StockItemGraph>
           </div>
@@ -111,3 +114,20 @@ class StockItem extends Component {
 
 
 export default StockItem;
+
+
+
+    // this.setState({
+    //   isMarked: false,
+
+    //   description: {
+    //     F_STOCK_LISTED_COMPANY_NO: 332,
+    //     F_STOCK_LISTED_COMPANY_CD: "005930",
+    //     F_STOCK_LISTED_COMPANY_NAME: "삼성전자",
+    //     F_STOCK_LISTED_COMPANY_SECTION: "KOSPI",
+    //     PRICE: 59700,
+    //     PRICE_CHANGE: -200,
+    //     RATE: -0.33
+    //   },
+    //   graphs: ["Graph1", "Graph2", "Graph3"],
+    // })

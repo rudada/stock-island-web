@@ -4,11 +4,11 @@ import StockItem from './stockitem/StockItem';
 import StockPrectionView from '../components/stockitem/StockPredictionView';
 import StockItemArticle from './stockitem/StockItemArticle';
 
-function Search() {
+function Search({match}) {
     return (
         <div className="content_search">
             <Searchbar></Searchbar>
-            <StockItem stockid="005930"></StockItem>
+            <StockItem keyword = {match.params.keyword}></StockItem>
             <StockPrectionView></StockPrectionView>
             <StockItemArticle></StockItemArticle>
         </div>

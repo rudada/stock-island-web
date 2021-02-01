@@ -16,7 +16,7 @@ class Autocomplete extends React.Component {
     }
 
     filter = async(event) => {
-        const data = (await this._callAPI(event.target.value)) || new Array();      //일치하는 검색어 없을 경우 빈 Array로 설정
+        const data = (await this._callAPI(event.target.value)) || new Array();
 
         this.setState({
             filteredKeywords: data

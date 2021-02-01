@@ -61,12 +61,12 @@ function App() {
 
             <div className="wrapper">
                 <Route exact path="/" component={Home} />
-                <Route exact path="/board" component={Board} />
-                <Route exact path="/weekly" component={Weekly} />
-                <Route exact path="/mypage" component={Mypage} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/search" component={Search} />
-                <Route exact path="/details" component={StockItemDetails} />
+                <Route path="/board" component={Board} />
+                <Route path="/weekly" component={Weekly} />
+                <Route path="/mypage" component={Mypage} />
+                <Route path="/login" component={Login} />
+                <Route path="/search/:keyword" component={Search} />
+                <Route path="/details" component={StockItemDetails} />
             </div>
         </Router>
     )

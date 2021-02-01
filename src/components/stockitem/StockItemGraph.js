@@ -20,15 +20,15 @@ function ItemGraph(props) {
       .domain([min, max])
       .range([300, 0]);                       //아래에서 위로 올라가야 하기 때문엥 거꾸로 넣기
 
-
     const xAxis = axisBottom(xScale)
-      .ticks(7)                               //ticks(눈금선)
+      .ticks(5)                               //ticks(눈금선)
       .tickFormat((index) => {
         const element = new Date(date[index]);
         return `${element.getFullYear()}-${element.getMonth()+1}-${element.getDate()}`
       });
     const yAxis = axisLeft(yScale)
       .ticks(5);
+      
     svg
       .select(".x-axis")
       .style("transform", "translateY(300px)") //그래프 하단에 x축 그리기 위해
@@ -67,32 +67,11 @@ function ItemGraph(props) {
 function StockItemGraph(props) {
   const { totalGraph, quarterGraph} = props;
 
-  console.log(totalGraph, quarterGraph);
-
-  const total = totalGraph.reduce(
-    (result, row) => {
-      return([
-      [...(result[0] || []), row['date']],
-      [...(result[1] || []), row['price']]
-    ])},
-    new Array(2)
-  )
-
-  const quarter = quarterGraph.reduce(
-    (result, row) => {
-      return([
-      [...(result[0] || []), row['date']],
-      [...(result[1] || []), row['price']]
-    ])},
-    new Array(2)
-  )
-
-
   return (
     <div className='stockitem_graph'>
-      <TabComponent tabNames={['weekly', 'monthly']}>
-        <ItemGraph date ={total[0]} price={total[1]} ></ItemGraph>
-        <ItemGraph date ={quarter[0]} price={quarter[1]}></ItemGraph>
+      <TabComponent tabNames={['3개월', '1년']}>
+        <ItemGraph date ={totalGraph[0]} price={totalGraph[1]} ></ItemGraph>
+        <ItemGraph date ={quarterGraph[0]} price={quarterGraph[1]}></ItemGraph>
       </TabComponent>
     </div>
   );
