@@ -21,6 +21,14 @@
 }
 
 .background {
+    position: absolute;
+    width:500px; 
+    height:100px; 
+    background:white;
+    z-index: 1;
+}
+
+.background-image {
     filter: blur(4px);
     position: absolute;
     width:500px; 
