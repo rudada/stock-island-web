@@ -5,6 +5,7 @@
     text-align: center;
     margin: 0 auto;
     width: 70%;
+    min-width: 500px;
     padding-top: 100px; /* navbar에 가려진 부분 padding으로 내리기 */
 }
 body {

@@ -9,7 +9,8 @@ import Home from './containers/Home';
 import Board from './containers/Board';
 import Weekly from './containers/Weekly';
 import Mypage from './containers/Mypage';
-import Login from './containers/Login';
+import LogIn from './containers/auth/LogIn';
+import SignUp from './containers/auth/SignUp';
 import Search from './containers/Search';
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
                             </MDBDropdownToggle>
                             <MDBDropdownMenu className="dropdown-default" >
                                 <MDBDropdownItem href="/mypage" >Mypage</MDBDropdownItem>
-                                <MDBDropdownItem href="/login">Login</MDBDropdownItem>
+                                <MDBDropdownItem href="/login">LogIn</MDBDropdownItem>
                                 <MDBDropdownItem href="#!">Logout</MDBDropdownItem>
                                 <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                             </MDBDropdownMenu>
@@ -64,7 +65,8 @@ function App() {
                 <Route path="/board" component={Board} />
                 <Route path="/weekly" component={Weekly} />
                 <Route path="/mypage" component={Mypage} />
-                <Route path="/login" component={Login} />
+                <Route path="/login" component={LogIn} />
+                <Route path="/signup" component={SignUp} />
                 <Route path="/search/:keyword" component={Search} />
             </div>
         </Router>
