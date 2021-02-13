@@ -10,7 +10,7 @@ import {
 import LogIn from "../../components/auth/LogIn";
 
 export default class extends Component {
-
+    
     constructor(props) {
         super(props);
         this.state = { email: "", pw: "" };
