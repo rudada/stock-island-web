@@ -47,7 +47,7 @@ function HomeSearchbar(props) {
         id="mui-theme-provider-standard-input"
         fullWidth
         size='small'
-        onChange={changeHandler}
+        onKeyUp={changeHandler}
       />
       <div className={`keyword-list ${classes.keywordlist} ${classes.margin}`}>
         {
