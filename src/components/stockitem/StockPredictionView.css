@@ -20,7 +20,7 @@
     color: black;
 }
 
-.background {
+.background-image {
     filter: blur(4px);
     position: absolute;
     width:500px; 
@@ -29,11 +29,24 @@
     z-index: 1;
 }
 
-.background p b{
+.background-image img {
+    width:500px; 
+    height:100px;
+}
+
+.prediction {
+    position: absolute;
+    width:500px; 
+    height:100px; 
+    background:white;
+    z-index: 1;
+}
+
+.prediction p b{
     color: black;
 }
 
-.background button {
+.prediction button {
     color: black;
 }
 
