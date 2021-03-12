@@ -3,20 +3,22 @@
 
    
 }
-.wrapper {
-    text-align: center;
-    margin: 0 auto;
-    /* width: 70%; */  /* 이거 없애서 마이페이지 수정 필요    */
-    min-width: 500px;
-    padding-top: 100px; /* navbar에 가려진 부분 padding으로 내리기 */
-}
 
 body {
     background-color: rgb(13,12,16)!important;
     color: rgb(255, 255, 255);
 }
 
+.wrapper {
+    text-align: center;
+    margin: 0 auto;
+    /* width: 70%; */  /* 이거 없애서 마이페이지 수정 필요    */
+    min-width: 500px;
+     /* padding-top: 100px; navbar에 가려진 부분 padding으로 내리기 */
+}
+
 .bg_image{ /* home 배경이미지 */
+    padding-top: 100px;
     background-image: linear-gradient( 
         to right,
         transparent,
@@ -24,15 +26,16 @@ body {
     ), url("./powder.png");
     background-position: 100% 180%;
     background-repeat: no-repeat;
-
 }
 
 .navbar {
     color:rgb(13,12,16);
 }
+
 .searchbar {
     margin:20px;
 }
+
 .content_search .search_input{
     display: inline;
 
@@ -42,6 +45,7 @@ body {
     font-size: 80px;
     text-align: center;
 }
+
 .content_search .title {
     display: inline;
 
@@ -62,6 +66,24 @@ body {
     text-align: left;
 }
 
+.bg_weekly{
+    padding-top: 100px;
+    background:
+    radial-gradient(circle at 50% 0,
+    rgba(13,12,16,.9),
+    rgba(255,0,0,0) 70.71%),
+  radial-gradient(circle at 6.7% 75%,
+    rgba(165,140,253,.5),
+    rgba(0,0,255,0) 70.71%),
+  radial-gradient(circle at 93.3% 75%,
+    rgba(115,199,161,.5),
+    rgba(0,255,0,0) 70.71%) rgba(245, 245, 220, 0.158);
+
+    /* linear-gradient(217deg, rgba(115,199,161,.5), rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, rgba(13,12,16,.5), rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, rgba(165,140,253,.5), rgba(0,0,255,0) 70.71%); */
+
+}
 
 .box {
     background-color: rgb(13,12,16);

@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     line: {
         backgroundColor : '#6d6d6f',
         margin : 8
+    },
+    text:{  /* 글자수가 넘친다면 사용해보기 */ 
+        overflow: 'hidden',
     }
   }));
 
