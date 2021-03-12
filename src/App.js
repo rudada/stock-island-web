@@ -13,6 +13,7 @@ import LogIn from './containers/auth/LogIn';
 import SignUp from './containers/auth/SignUp';
 import Search from './containers/Search';
 
+
 function App() {
     const [isOpen, setOpen] = useState(false);
     const toggleCollapse = () => {

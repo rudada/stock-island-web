@@ -1,17 +1,32 @@
 * {
     color: white ; /* 드롭다운 글씨 안보여서 !important 지움 */
+
+   
 }
 .wrapper {
     text-align: center;
     margin: 0 auto;
-    width: 70%;
+    /* width: 70%; */  /* 이거 없애서 마이페이지 수정 필요    */
     min-width: 500px;
     padding-top: 100px; /* navbar에 가려진 부분 padding으로 내리기 */
 }
+
 body {
     background-color: rgb(13,12,16)!important;
     color: rgb(255, 255, 255);
 }
+
+.bg_image{ /* home 배경이미지 */
+    background-image: linear-gradient( 
+        to right,
+        transparent,
+      rgba(13, 12, 16, 0.7)
+    ), url("./powder.png");
+    background-position: 100% 180%;
+    background-repeat: no-repeat;
+
+}
+
 .navbar {
     color:rgb(13,12,16);
 }

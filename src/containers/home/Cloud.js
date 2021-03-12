@@ -8,12 +8,6 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 
 
-//import conversor from "./d3WC.js";
-// import { ModalPage, modal15 } from './Modal.js'
-
-//import randomColor from 'randomcolor';
-
-
 
 function getCallback(callback) {
   return function (word, event) {
@@ -50,7 +44,7 @@ const options = {
   enableTooltip: true,
   deterministic: false,
   fontFamily: "Noto-Sans",
-  fontSizes: [8, 65],
+  fontSizes: [12, 70],
   fontStyle: "italic",
   fontWeight: "bold",
   padding: 5,
@@ -59,7 +53,7 @@ const options = {
   scale: "sqrt",
   spiral: "archimedean",
   transitionDuration: 1000,
-  size: [500, 600]
+  size: [600, 700]
 };
 
 
