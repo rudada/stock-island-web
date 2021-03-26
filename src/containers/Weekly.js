@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     },
     main : {
         color :'#F3AA88',
+    },
+    title : {
+      padding : theme.spacing(3, 40),
     }
   }));
   
@@ -49,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     return (
     <div className="bg_weekly">
       <div className={classes.root}>
+        <Typography className={classes.title} variant="h5" align="justify"> 주간평가</Typography>
         <Paper className={classes.paper}>
           <Grid container spacing={2}>
             <Grid item>
