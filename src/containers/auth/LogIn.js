@@ -9,6 +9,8 @@ import {
 
 import LogIn from "../../components/auth/LogIn";
 
+import axios from 'axios';
+
 export default class extends Component {
     
     constructor(props) {
@@ -16,6 +18,15 @@ export default class extends Component {
         this.state = { email: "", pw: "" };
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+    }
+
+    onClickBtn = () => {
+        const data = {num: 2}
+        axios.post("http://localhost:4000/auth", data)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {console.log(err);})
     }
 
     
@@ -56,6 +67,7 @@ export default class extends Component {
                     onEmailLogin={this.onEmailLogin}
                     onChangeEmail={this.onChangeEmail}
                     onChangePassword={this.onChangePassword}
+                    onClickBtn={this.onClickBtn}
                 >
                 </LogIn>
             </FirebaseAuthProvider>
