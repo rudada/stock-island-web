@@ -1,0 +1,32 @@
+.ProfileImage {
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    text-align: center;
+
+    &.small {
+        width: 5vw;
+        height: 5vw;
+    }
+    &.large {
+        width: 400px;
+        height: 400px;
+    }
+
+    .Photo {
+        display: inline;
+        margin: 0 auto;
+        height: 100%;
+        width: auto;
+    }
+}
+
+@media screen and (max-width : 992px) {
+    .ProfileImage {
+        &.small {
+            width: 10vw;
+            height: 10vw;
+        }
+    }
+}

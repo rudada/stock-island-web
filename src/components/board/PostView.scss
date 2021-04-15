@@ -1,0 +1,75 @@
+$pv-bg-color: rgba(28, 28, 28, 0.7);
+$pv-gradient: linear-gradient(to right, rgba(44,43,43,1) 0%,rgba(242,193,235,1) 69%,rgba(165,140,253,1) 100%);
+
+//layout
+.PostView {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap : nowrap;
+    .column-1,
+    .column-3
+    {
+        flex: 0 0 5vw;
+    }
+    .column-2 {
+        width: 100%;
+    }
+}
+@media screen and (max-width : 992px) {
+    .PostView {
+        .column-1,
+        .column-3 {
+            flex: 0 0 10vw;
+        }
+    }
+}
+
+//speech balloons
+.PostView {
+    .post-content {
+        width: 80%;
+        position: relative;
+        clear: both;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: $pv-bg-color;
+        text-align: left;
+        margin: 1vw 0 0 20px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            left: -15px;
+            border-top: 15px solid $pv-bg-color;
+        }
+    }
+}
+
+
+
+.PostView {
+    .post-userinfo {
+        word-wrap: break-word;
+    }
+    .post-content {
+     hr {
+        height: 1px;
+        background: $pv-gradient;
+     }
+     .info {
+         right: 0;
+         margin-top: 20px;
+         text-align: right;
+         .date,
+         .views {
+            margin-right: 10px;
+            color: gray;
+         }
+     }
+    }
+}

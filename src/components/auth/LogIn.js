@@ -7,7 +7,7 @@ LogIn.propTypes = {
 };
 
 function LogIn(props) {
-    const {onGoogleLogin, onEmailLogin, onChangeEmail, onChangePassword} = props;
+    const {onGoogleLogin, onEmailLogin, onChangeEmail, onChangePassword, onClickBtn} = props;
     return (
         <div className="login-wrapper">
             <h2> 로그인 </h2>
@@ -30,6 +30,9 @@ function LogIn(props) {
 
             <span><a className="signup" href="/signup">회원가입</a></span>
 
+<div>
+            <button className="post" onClick={onClickBtn}>post</button>
+            </div>
 
         </div>
     );

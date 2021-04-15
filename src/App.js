@@ -6,7 +6,7 @@ import { IoMdPerson } from "react-icons/io";
 import './App.css'
 
 import Home from './containers/Home';
-import Board from './containers/Board';
+import Board from './pages/Board';
 import Weekly from './containers/Weekly';
 import Mypage from './containers/Mypage';
 import LogIn from './containers/auth/LogIn';
