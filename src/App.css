@@ -4,12 +4,11 @@
 
 body {
     background-color: rgb(13,12,16)!important;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
 }
 
 .wrapper {
     text-align: center;
-    margin: 0 auto;
     padding-top: 100px; 
 }
 
@@ -18,34 +17,17 @@ body {
         to right,
         transparent,
       rgba(13, 12, 16, 0.7)
-    ), url("./powder.png");
+    ), url("./common/images/powder.png");
     background-position: 100% 180%;
     background-repeat: no-repeat;
 }
 
-.navbar {
+/* .navbar {
     color:rgb(13,12,16);
-}
-
-.searchbar {
-    margin:20px;
-}
-
-.content_search .search_input{
-    display: inline;
-
-}
+} */
 
 .content_home .title {
     font-size: 80px;
-    text-align: center;
-}
-
-.content_search .title {
-    display: inline;
-
-    margin-right: 10px;
-
 }
 
 .small_title {
