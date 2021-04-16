@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import Searchbar from '../components/Searchbar'
+// import Searchbar from '../components/Searchbar'
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
 
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       padding: theme.spacing(0, 3),
       overflow: 'hidden',
+      paddingTop: '100px',
     },
     paper: {
       padding: theme.spacing(3),
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
   
-  export default function Weekly() {
+  export default function WeeklyContainer() {
     const classes = useStyles();
   
     return (

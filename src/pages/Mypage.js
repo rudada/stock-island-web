@@ -1,10 +1,10 @@
 import React from 'react';
-import MypageProfile from './mypage/MypageProfile';
-import MypagePosts from './mypage/MypagePosts';
+import MypageProfile from '../containers/mypage/MypageProfile';
+import MypagePosts from '../containers/mypage/MypagePosts';
 
 function Mypage() {
     return(
-        <div  className="content_mypage">
+        <div  className="content-mypage">
             <MypageProfile></MypageProfile>
             <MypagePosts></MypagePosts>
         </div>

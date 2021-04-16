@@ -1,8 +1,8 @@
 import React from 'react';
 import Searchbar from '../components/Searchbar';
-import StockItem from './stockitem/StockItem';
+import StockItem from '../containers/stockitem/StockItem';
 import StockPrectionView from '../components/stockitem/StockPredictionView';
-import StockItemArticle from './stockitem/StockItemArticle';
+import StockItemArticle from '../containers/stockitem/StockItemArticle';
 
 function Search({match}) {
     return (

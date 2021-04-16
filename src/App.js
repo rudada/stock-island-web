@@ -5,13 +5,13 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { IoMdPerson } from "react-icons/io";
 import './App.css'
 
-import Home from './containers/Home';
+import Home from './pages/Home';
 import Board from './pages/Board';
-import Weekly from './containers/Weekly';
-import Mypage from './containers/Mypage';
+import Weekly from './pages/Weekly';
+import Mypage from './pages/Mypage';
 import LogIn from './containers/auth/LogIn';
 import SignUp from './containers/auth/SignUp';
-import Search from './containers/Search';
+import Search from './pages/Search';
 
 
 function App() {

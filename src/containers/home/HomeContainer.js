@@ -1,10 +1,10 @@
 import React from 'react';
-import HomeSearchbar from '../components/home/HomeSearchbar'
+import HomeSearchbar from '../../components/home/HomeSearchbar'
 import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
-import Autocomplete from './common/Autocomplete'
-import Cloud from './home/Cloud'
+import Autocomplete from '../common/Autocomplete'
+import Cloud from './Cloud'
 
-import ModalPage from './Modal.js'
+import ModalPage from '../Modal.js'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-function Home() {
+function HomeContainer() {
     const [spacing] = React.useState(5);
     const classes = useStyles();
 
@@ -179,4 +179,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default HomeContainer;

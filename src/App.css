@@ -1,7 +1,5 @@
 * {
     color: white ; /* 드롭다운 글씨 안보여서 !important 지움 */
-
-   
 }
 
 body {
@@ -12,13 +10,10 @@ body {
 .wrapper {
     text-align: center;
     margin: 0 auto;
-    /* width: 70%; */  /* 이거 없애서 마이페이지 수정 필요    */
-    min-width: 500px;
-     /* padding-top: 100px; navbar에 가려진 부분 padding으로 내리기 */
+    padding-top: 100px; 
 }
 
 .bg_image{ /* home 배경이미지 */
-    padding-top: 100px;
     background-image: linear-gradient( 
         to right,
         transparent,
@@ -67,7 +62,10 @@ body {
 }
 
 .bg_weekly{
-    padding-top: 100px;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    /* padding-top: 100px; */
     background:
     radial-gradient(circle at 50% 0,
     rgba(13,12,16,.9),
