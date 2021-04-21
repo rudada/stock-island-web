@@ -1,0 +1,25 @@
+$bw-bg-color : rgba(28, 28, 28, 0.7);
+
+.BoardWrite {
+    padding-top: 20px;
+
+    textarea {
+        width: 100%;
+        border-radius: 10px;
+        resize: none;
+        background-color: $bw-bg-color;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .title  {
+        height: 35px;
+    }
+
+    .content {
+        height: 400px;
+    }
+
+    .submit {
+        margin: 5px;
+    }
+}

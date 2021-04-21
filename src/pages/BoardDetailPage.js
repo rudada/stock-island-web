@@ -1,12 +1,12 @@
 import React from 'react';
-import PostViewContainer from '../containers/board/PostViewContainer'
+import BoardDetailContainer from '../containers/board/BoardDetailContainer'
 import CommentContainer from '../containers/board/CommentContainer'
 import CommentEditContainer from '../containers/board/CommentEditContainer'
 
-function PostViewPage ({match}) {
+function BoardDetailPage ({match}) {
     return (
         <>
-        <PostViewContainer></PostViewContainer>
+        <BoardDetailContainer></BoardDetailContainer>
         <CommentContainer></CommentContainer>
         <CommentEditContainer></CommentEditContainer>
         </>
@@ -14,4 +14,4 @@ function PostViewPage ({match}) {
 };
 
 
-export default PostViewPage;
+export default BoardDetailPage;

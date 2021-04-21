@@ -1,0 +1,51 @@
+$pl-normal-color: rgb(165,140,253);
+
+.BoardList {
+    position: relative;
+
+    .write {
+        position: absolute;
+        right: 0px;
+        top: -30px;
+    }
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 5px;
+    }
+    tr {
+        height: 60px;
+    }
+    tbody {
+        tr {
+            background-color: rgb(44, 43, 43);
+            cursor: pointer;
+
+            &:hover {
+                background: $pl-normal-color;
+            }
+        }
+        td {
+            text-overflow: ellipsis;
+            position: relative;
+        }
+        td:first-child{
+            border-radius: 10px 0 0 10px;
+        }
+        td:last-child{
+            border-radius: 0 10px 10px 0;
+        }
+        td::after {
+            display: inline-block;
+            content:"";
+            height:22px;
+            border-right: 1px solid darkgray;
+            left: 100%;
+            position: absolute;
+        }
+        td:last-child::after {
+            content: none;
+        }
+        
+    }
+}

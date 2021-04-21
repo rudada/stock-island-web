@@ -135,3 +135,9 @@ body {
             transform:skew(8deg) rotate(3deg);
 
 }
+
+
+textarea {
+  border: none;
+  outline: none;
+}

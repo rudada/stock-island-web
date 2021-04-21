@@ -12,18 +12,11 @@ $ce-normal-color: rgb(165,140,253);
         border-radius: 10px;
         background-color: $ce-bg-color;
         padding: 5px 10px 5px 10px;
-        border: none;
-        outline: none;
     }
     
     .submit {
         position: absolute;
         right: 0px;
         bottom: -35px;
-        border-radius: 8px;
-        padding: 3px 10px 3px 11px;
-        background-color: $ce-normal-color;
-        border: none;
-        outline: none; 
     }
 }

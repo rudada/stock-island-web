@@ -1,5 +1,5 @@
 import React from "react";
-import "./PostView.scss";
+import "./BoardDetail.scss";
 import ProfileImageComponent from "../common/ProfileImageComponent";
 
 const Post = ({post}) => {
@@ -19,9 +19,9 @@ const Post = ({post}) => {
   );
 }
 
-const PostView = ({ post }) => {
+const BoardDetail = ({ post }) => {
   return (
-    <div className="PostView">
+    <div className="BoardDetail">
       <div className="column-1">
         <div className="post-userinfo">
           <ProfileImageComponent
@@ -39,4 +39,4 @@ const PostView = ({ post }) => {
   );
 };
 
-export default PostView;
+export default BoardDetail;
