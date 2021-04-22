@@ -4,8 +4,6 @@ import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableBody, MDBTableHead } fr
 import Autocomplete from '../common/Autocomplete'
 import Cloud from './Cloud'
 
-import ModalPage from '../Modal.js'
-
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
