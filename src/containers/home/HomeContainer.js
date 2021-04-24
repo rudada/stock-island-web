@@ -2,7 +2,7 @@ import React from 'react';
 import HomeSearchbar from '../../components/home/HomeSearchbar'
 import { MDBContainer, MDBRow, MDBCol, MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 import Autocomplete from '../common/Autocomplete'
-import Cloud from './Cloud'
+import CloudContainer from './CloudContainer'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -61,7 +61,7 @@ function HomeContainer() {
             <MDBRow><br /><br /><br /></MDBRow>
             <MDBRow >
                 <MDBCol></MDBCol>
-                <MDBCol size="10"> <Cloud /> </MDBCol>
+                <MDBCol size="10"> <CloudContainer /> </MDBCol>
                 <MDBCol></MDBCol>
             </MDBRow>
             <MDBRow><br /></MDBRow>
