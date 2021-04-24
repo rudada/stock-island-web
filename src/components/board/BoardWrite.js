@@ -13,8 +13,8 @@ function BoardWrite({title, content, changeTitle, changeContent, onPost, onCance
         <div className="BoardWrite">
             <textarea className="title" placeholder="Title" type="text" value={title} onChange={onChangeTitle}></textarea>
             <textarea className="content" placeholder="Content"type="text" value={content} onChange={onChangeContent}></textarea>
-            <BoardButton text="post" onClick={() => onPost()}></BoardButton>
-            <BoardButton text="cancel" onClick={() => onCancel()}></BoardButton>
+            <BoardButton text="post" onClick={onPost}></BoardButton>
+            <BoardButton text="cancel" onClick={onCancel}></BoardButton>
         </div>
     );
 }

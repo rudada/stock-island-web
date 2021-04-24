@@ -6,5 +6,5 @@ export const listPost = ({ offset, limit}) => {
 
 // export const readPost = ();
 export const writePost = ({ title, content }) => {
-    return clent.post('/board', {title, content});
+    return client.post('/board', {title, content});
 };

@@ -1,32 +1,14 @@
-// import "d3-transition";
-// import { select } from "d3-selection";
-import React, { Component } from "react";
-//import ReactDOM from "react-dom";
-// import ReactWordcloud from "react-wordcloud";
+import React, { Component, useEffect, useState, useCallback } from "react";
 import { getWordcloud } from "../../lib/api/home";
 import ArticleModalContainer from "../common/ArticleModalContainer.js";
-import WordCloud from "../../components/home/WordCloud.js"
+import WordCloud from "../../components/home/WordCloud.js";
 
-// import "tippy.js/dist/tippy.css";
-// import "tippy.js/animations/scale.css";
+function CloudContainer() {
+  const [words, setWords] = useState([]);
+  const [selectedKeyword, setKeyword] = useState("");
+  const [isModalOpen, setModal] = useState(false);
 
-
-
-class CloudContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      words: [],
-      selectedKeyword: "",
-      isModalOpen: false,
-    };
-  }
-
-  componentDidMount() {
-    this._getWords();
-  }
-
-  _getWords = async () => {
+  useEffect(async () => {
     const data = await getWordcloud()
       .then((res) => res.data.body)
       .then((res) => JSON.parse(res).data);
@@ -35,37 +17,33 @@ class CloudContainer extends Component {
       text: row["NAMED_ENTITY"],
       value: row["NAMED_ENTITY_COUNT"],
     }));
+    setWords(words);
+  }, []);
 
-    this.setState({
-      words,
-    });
-  };
+  const onClick = useCallback((e) => {
+    if (e.target.nodeName != "text") return;
+    setKeyword(e.target.textContent);
+    changeModal();
+  });
 
-  onClick(e) {
-    if(e.target.nodeName != 'text') return;
-    this.setState({ selectedKeyword: e.target.textContent });
-    this.changeModal();
-  }
+  const changeModal = useCallback(() => {
+    setModal(!isModalOpen);
+  });
 
-  changeModal() {
-    this.setState({ isModalOpen: !this.state.isModalOpen });
-  }
+  return (
+    <div>
+      <ArticleModalContainer
+        keyword={selectedKeyword}
+        isOpen={isModalOpen}
+        changeModal={() => changeModal()}
+      ></ArticleModalContainer>
 
-  render() {
-    return (
-      <div>
-        <ArticleModalContainer keyword={this.state.selectedKeyword} isOpen={this.state.isModalOpen} changeModal={() => this.changeModal()}></ArticleModalContainer>
-        {/* <ReactWordcloud
-          options={options}
-          callbacks={callbacks}
-          words={this.state.words}
-          onClick={(e) => this.onClick(e)}
-        /> */}
-
-        <WordCloud words={this.state.words} onClick={(e) => this.onClick(e)}></WordCloud>
-      </div>
-    );
-  }
+      <WordCloud
+        words={words}
+        onClick={(e) => onClick(e)}
+      ></WordCloud>
+    </div>
+  );
 }
 
 export default CloudContainer;

@@ -9,8 +9,11 @@ function BoardWriteContainer({ writePost, post, error, loading, history }) {
   const [content, setContent] = useState("");
 
   const onPost = () => {
-    writePost(title, content);
-    console.log("GG");
+    try {
+      writePost(title, content);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const onCancel = () => {
@@ -23,8 +26,8 @@ function BoardWriteContainer({ writePost, post, error, loading, history }) {
       content={content}
       changeTitle={(title) => setTitle(title)}
       changeContent={(content) => setContent(content)}
-      onPost={onPost}
-      onCancel={onCancel}
+      onPost={() => onPost()}
+      onCancel={() => onCancel()}
     ></BoardWrite>
   );
 }
