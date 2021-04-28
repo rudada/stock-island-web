@@ -1,7 +1,7 @@
 import React from "react";
 import "./Modal.scss";
 
-function Modal({ keyword, isOpen, changeModal }) {
+function Modal({ isOpen, changeModal, children }) {
   return (
     <div className="Modal">
       {isOpen && (
@@ -11,7 +11,7 @@ function Modal({ keyword, isOpen, changeModal }) {
             <a className="btn-close" onClick={changeModal}>
                 <i className="fas fa-times-circle"></i>
             </a>
-            {keyword}
+            {children}
           </div>
         </div>
       )}

@@ -1,0 +1,41 @@
+.ArticleList {
+    height: 100%;
+
+    .keyword {
+        height: 10%;
+    }
+
+    .articles {
+        width: 100%;
+        height: 85%;
+        overflow: auto;
+
+        table {
+            width: 100%;
+        }
+        tr {
+            height: 40px;
+            transition: all 0.2s ease-in-out;
+        }
+        tr:hover {
+            opacity: 0.1;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+        }
+        &::-webkit-scrollbar {
+            background-color: transparent;
+            width: 15px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: white;
+            border-radius: 10px;
+        }
+    }
+
+    .article {
+        width: 100%;
+    }
+}

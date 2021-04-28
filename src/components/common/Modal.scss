@@ -22,13 +22,15 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        background: linear-gradient(45deg, #F3AA88 30%, #A58CFD 90%);
+        background: #222326;
+        opacity: 0.95;
         position: absolute;
         z-index: 10;
         border-radius: 10px;
 
-        i {
-            color: black;
+        .btn-close {
+            position: absolute;
+            right: 1rem;
         }
     }
 }

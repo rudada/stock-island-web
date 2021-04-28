@@ -20,6 +20,7 @@ $pl-normal-color: rgb(165,140,253);
         tr {
             background-color: rgb(44, 43, 43);
             cursor: pointer;
+            transition: all 0.4s ease-in-out;
 
             &:hover {
                 background: $pl-normal-color;

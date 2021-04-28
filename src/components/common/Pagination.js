@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import "./PaginationComponent.scss";
+import "./Pagination.scss";
 
 const position = [
   "pos-0",
@@ -11,7 +11,7 @@ const position = [
   "pos-6",
 ];
 
-const PaginationComponent = ({ totalPage, currentPage }) => {
+const Pagination = ({ totalPage, currentPage }) => {
   const [pos, setPos] = useState(3);
 
   const onMouseOver = useCallback((e) => {
@@ -69,4 +69,4 @@ const PaginationComponent = ({ totalPage, currentPage }) => {
   );
 };
 
-export default PaginationComponent;
+export default Pagination;
