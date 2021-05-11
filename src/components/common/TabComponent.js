@@ -62,13 +62,9 @@ function TabComponent(props) {
     };
 
     return (
-        <div>
             <Tabs  className={classes.tabs} value={currentTab} onChange={tabChange} TabIndicatorProps={{ children: <span /> }}>
                 {tabNames.map((name, key) => <Tab className={classes.tab} key={key} label = {name}></Tab>)}
             </Tabs>
-
-            {children.map((child, key) => <TabPanel value={currentTab} key={key} index={key}> {child} </TabPanel>)}
-        </div>
     )
 
 

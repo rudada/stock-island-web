@@ -47,7 +47,8 @@ function ArticleModalContainer({keyword, isOpen, changeModal}) {
 
     return (
         <Modal isOpen={isOpen} changeModal={changeModal}>
-            <ArticleList keyword={keyword} articles={articles}> </ArticleList>
+            <div style= {{height: "10%"}}>{keyword}</div>
+            <ArticleList articles={articles}> </ArticleList>
         </Modal>
     );
 }

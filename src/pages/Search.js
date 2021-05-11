@@ -1,16 +1,16 @@
 import React from 'react';
 import Searchbar from '../components/Searchbar';
-import StockItem from '../containers/stockitem/StockItem';
-import StockPrectionView from '../components/stockitem/StockPredictionView';
-import StockItemArticle from '../containers/stockitem/StockItemArticle';
+import SearchDetailContainer from '../containers/search/SearchDetailContainer';
+import SearchArticleContainer from '../containers/search/SearchArticleContainer';
+import SearchGraphContainer from '../containers/search/SearchGraphContainer';
 
 function Search({match}) {
     return (
         <div className="content_search">
-            <Searchbar></Searchbar>
-            <StockItem keyword = {match.params.keyword}></StockItem>
-            <StockPrectionView></StockPrectionView>
-            <StockItemArticle></StockItemArticle>
+            {/* <Searchbar></Searchbar> */}
+            <SearchDetailContainer keyword = {match.params.keyword}></SearchDetailContainer>
+            <SearchGraphContainer keyword = {match.params.keyword}></SearchGraphContainer>
+            <SearchArticleContainer></SearchArticleContainer>
         </div>
     )
 }

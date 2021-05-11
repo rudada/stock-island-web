@@ -1,0 +1,18 @@
+.DatePick {
+    background-color: #6c757d63;
+    display: inline-flex;
+    border-radius: 10px;
+
+    button {
+        border-style: none;
+        background: none;
+        color: black;
+        outline: none;
+    }
+    button:focus {
+        outline:none;
+    }
+    .dash {
+        color: black;
+    }
+}

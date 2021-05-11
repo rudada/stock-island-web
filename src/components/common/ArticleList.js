@@ -3,19 +3,17 @@ import "./ArticleList.scss";
 
 function Article({ title, url, date }) {
   return (
-    <tr className="article"><a href={url}>
+    <tr className="article">
       <td width="70%">
-         {title}
+        <a href={url}>{title}</a>
       </td>
       <td width="30%">{date}</td>
-      </a>
     </tr>
   );
 }
-function ArticleList({ keyword, articles }) {
+function ArticleList({ articles }) {
   return (
     <div className="ArticleList">
-      <div className="keyword">{keyword}</div>
       <div className="articles">
         <table>
           <tbody>
