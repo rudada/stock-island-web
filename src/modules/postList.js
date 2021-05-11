@@ -10,6 +10,12 @@ const [
     LIST_POST_FAILURE,
 ] = createRequestActionTypes('postList/LIST_POST');
 
+const CHANGE_PAGE = "CHANGE_PAGE"
+export const changePage = (page) => ({
+    type: CHANGE_PAGE,
+    page : page
+})
+
 export const listPost = (offset, limit = 10) => ({
     type: LIST_POST,
     payload: {offset, limit}, 
@@ -22,6 +28,7 @@ export function* postListSaga() {
 }
 
 const initialState = {
+    page: 0,
     result: null,
     error: null,
 }
@@ -38,6 +45,11 @@ export default function postList(state = initialState, action) {
                 ...state,
                 error: action.error,
             };
+        case CHANGE_PAGE :
+            return {
+                ...state,
+                page : action.page,
+            }
         default : return state;
     }
 }

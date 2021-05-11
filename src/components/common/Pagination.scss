@@ -69,6 +69,13 @@ $pgn-disabled-color: #bec2d8;
     float: right;
   }
 
+  .abled * {
+    color: white;
+  }
+  .disabled * {
+    color: gray;
+  }
+
 }
 
 .pagination-list {
