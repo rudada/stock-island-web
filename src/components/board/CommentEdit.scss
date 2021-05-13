@@ -20,3 +20,9 @@ $ce-normal-color: rgb(165,140,253);
         bottom: -35px;
     }
 }
+
+@media screen and (max-width : 992px) {
+    .CommentEdit{
+       width: 100%;
+    }
+}

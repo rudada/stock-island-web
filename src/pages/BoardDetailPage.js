@@ -7,7 +7,6 @@ function BoardDetailPage ({match}) {
     return (
         <>
         <BoardDetailContainer></BoardDetailContainer>
-        <CommentContainer></CommentContainer>
         <CommentEditContainer></CommentEditContainer>
         </>
     );

@@ -28,8 +28,11 @@ $pgn-disabled-color: #bec2d8;
     a, 
     strong {
       float: left;
-      text-align:center;
       padding-top: 20px;
+    }
+
+    a span {
+      margin: 0 auto;
     }
   }
 }
@@ -75,6 +78,9 @@ $pgn-disabled-color: #bec2d8;
   .disabled * {
     color: gray;
   }
+  .disabled .page-num {
+    display: none;
+  }
 
 }
 
@@ -84,12 +90,7 @@ $pgn-disabled-color: #bec2d8;
     a,
     span,
     strong {
-      display: block;
       width: 20%;
-      
-      // &.current {
-      //   display: block;
-      // }
     }
   }
 }

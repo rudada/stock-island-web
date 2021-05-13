@@ -16,14 +16,6 @@ $pv-gradient: linear-gradient(to right, rgba(44,43,43,1) 0%,rgba(242,193,235,1) 
         width: 100%;
     }
 }
-@media screen and (max-width : 992px) {
-    .BoardDetail {
-        .column-1,
-        .column-3 {
-            flex: 0 0 10vw;
-        }
-    }
-}
 
 //speech balloons
 .BoardDetail {
@@ -32,7 +24,7 @@ $pv-gradient: linear-gradient(to right, rgba(44,43,43,1) 0%,rgba(242,193,235,1) 
         position: relative;
         clear: both;
         padding: 20px;
-        border-radius: 10px;
+        border-radius: 20px;
         background-color: $pv-bg-color;
         text-align: left;
         margin: 1vw 0 0 20px;
@@ -57,19 +49,33 @@ $pv-gradient: linear-gradient(to right, rgba(44,43,43,1) 0%,rgba(242,193,235,1) 
         word-wrap: break-word;
     }
     .post-content {
-     hr {
-        height: 1px;
-        background: $pv-gradient;
-     }
-     .info {
-         right: 0;
-         margin-top: 20px;
-         text-align: right;
-         .date,
-         .views {
-            margin-right: 10px;
-            color: gray;
-         }
-     }
+        hr {
+            height: 1px;
+            background: $pv-gradient;
+        }
+        .info {
+            right: 0;
+            margin-top: 20px;
+            text-align: right;
+            .date,
+            .views {
+               margin-right: 10px;
+               color: gray;
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 992px) {
+    .BoardDetail {
+        .column-1,
+        .column-3 {
+            flex: 0 0 0vw;
+        }
+        .post-content {
+            min-width: none;
+            max-width: 500px;
+            width: -webkit-fill-available;
+        }
     }
 }

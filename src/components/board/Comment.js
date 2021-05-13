@@ -1,7 +1,8 @@
 import React from "react";
 import "./Comment.scss";
 
-function CommentItem({ user, content, date }) {
+function CommentItem({ comment }) {
+  const { user, content, date } = comment;
   return (
     <div className="CommentItem">
       <div className="column-1"></div>
@@ -25,12 +26,7 @@ function Comment(props) {
   return (
     <div className="Comment">
       {props.comments.map((comment, key) => (
-        <CommentItem
-          user={comment.user}
-          content={comment.content}
-          date={comment.date}
-          key={key}
-        ></CommentItem>
+        <CommentItem comment={comment} key={key}></CommentItem>
       ))}
     </div>
   );

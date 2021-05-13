@@ -13,62 +13,57 @@ const position = [
 
 const Pagination = ({ totalPage, currentPage, changePage }) => {
   const [pos, setPos] = useState(3);
-  const page = parseInt(currentPage) + 1;
+  const cpage = parseInt(currentPage);
+  const page = cpage + 1;
 
   /* mouse hover styling */
   const onMouseOver = useCallback((e) => {
     setPos(e.currentTarget.getAttribute("pos"));
   }, []);
-
   const onMouseLeave = useCallback((e) => {
     setPos(3);
-  });
+  }, []);
 
-  const isAvailable = useCallback((num) => num > 0 && num <= totalPage);
+  const isAvailable = useCallback((num) => num >= 0 && num < totalPage, []);
 
-  /* click event */
+  /* page change event */
   const onChangePage = useCallback((e) => {
-    console.log(e);
     changePage(e.currentTarget.getAttribute("value"));
-  });
+  }, []);
+
+  const PgnItem = ({ pos, value, children }) => {
+    return (
+      <a
+        className={isAvailable(value) ? "abled" : "disabled"}
+        onMouseOver={onMouseOver}
+        onClick={onChangePage}
+        pos={pos}
+        value={value}
+      >
+        {children}
+      </a>
+    );
+  };
 
   return (
     <div className="Pagination" onMouseLeave={onMouseLeave}>
       <div className="pgn">
         <ul className="pagination-list">
           <li className="prev">
-            <a
-              className={isAvailable(page - 1) ? "abled" : "disabled"}
-              onMouseOver={onMouseOver}
-              onClick={onChangePage}
-              rel="prev"
-              pos={0}
-              value={currentPage - 1}
-            >
+            <PgnItem pos={0} value={cpage - 1}>
               <i className="fas fa-chevron-left prev-icon"></i>
               <span>Prev</span>
-            </a>
+            </PgnItem>
           </li>
 
           <li className="pgn-item">
-            <a
-              className={isAvailable(page - 2) ? "abled" : "disabled"}
-              onMouseOver={onMouseOver}
-              onClick={onChangePage}
-              pos={1}
-              value={currentPage - 2}
-            >
-              {isAvailable(page - 2) ? page - 2 : ``}
-            </a>
-            <a
-              className={isAvailable(page - 1) ? "abled" : "disabled"}
-              onMouseOver={onMouseOver}
-              onClick={onChangePage}
-              pos={2}
-              value={currentPage - 1}
-            >
-              {isAvailable(page - 1) ? page - 1 : ``}
-            </a>
+            <PgnItem pos={1} value={cpage - 2}>
+              <span className="page-num">{page - 2}</span>
+            </PgnItem>
+            <PgnItem pos={2} value={cpage - 1}>
+              <span className="page-num">{page - 1}</span>
+            </PgnItem>
+
             <strong
               className="current"
               onMouseOver={onMouseOver}
@@ -77,39 +72,23 @@ const Pagination = ({ totalPage, currentPage, changePage }) => {
             >
               {page}
             </strong>
-            <a
-              className={isAvailable(page + 1) ? "abled" : "disabled"}
-              onMouseOver={onMouseOver}
-              onClick={onChangePage}
-              pos={4}
-              value={currentPage + 1}
-            >
-              {isAvailable(page + 1) ? page + 1 : ``}
-            </a>
-            <a
-              className={isAvailable(page + 2) ? "abled" : "disabled"}
-              onMouseOver={onMouseOver}
-              onClick={onChangePage}
-              pos={5}
-              value={currentPage + 2}
-            >
-              {isAvailable(page + 2) ? page + 2 : ``}
-            </a>
+
+            <PgnItem pos={4} value={cpage + 1}>
+              <span className="page-num">{page + 1}</span>
+            </PgnItem>
+
+            <PgnItem pos={5} value={cpage + 2}>
+              <span className="page-num">{page + 2}</span>
+            </PgnItem>
           </li>
 
           <li className="next">
-            <a
-              className={isAvailable(page + 1) ? "abled" : "disabled"}
-              onMouseOver={onMouseOver}
-              onClick={onChangePage}
-              rel="next"
-              pos={6}
-              value={currentPage + 1}
-            >
+            <PgnItem pos={6} value={cpage + 1}>
               <i className="fas fa-chevron-right next-icon"></i>
               <span>Next</span>
-            </a>
+            </PgnItem>
           </li>
+
           <li className={["magic-line", position[pos]].join(" ")}></li>
         </ul>
       </div>

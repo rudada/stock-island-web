@@ -3,16 +3,17 @@ import "./BoardDetail.scss";
 import ProfileImageComponent from "../common/ProfileImageComponent";
 
 const Post = ({post}) => {
+  const {title, content, date, views} = post
   return(
     <div className="post-content">
-          <h4 className="title">{post.title}</h4>
+          <h4 className="title">{title}</h4>
           <hr />
-          <div className="content">{post.content}</div>
+          <div className="content">{content}</div>
           <div className="info">
-            <span className="date">Updated on {post.date}, </span>
+            <span className="date">Updated on {date}, </span>
             <span className="views">
               <i className="far fa-eye"></i>
-              {post.views}
+              {views}
             </span>
           </div>
     </div>
@@ -39,4 +40,4 @@ const BoardDetail = ({ post }) => {
   );
 };
 
-export default BoardDetail;
+export default React.memo(BoardDetail);

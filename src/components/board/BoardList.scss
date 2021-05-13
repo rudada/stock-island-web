@@ -40,8 +40,10 @@ $pl-normal-color: rgb(165,140,253);
             display: inline-block;
             content:"";
             height:22px;
-            border-right: 1px solid darkgray;
+            border-right: 1px solid #a9a9a945;
             left: 100%;
+            top: 50%;
+            margin-top: -11px;
             position: absolute;
         }
         td:last-child::after {

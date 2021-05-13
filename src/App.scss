@@ -147,3 +147,17 @@ textarea {
   margin: 0 auto 20px auto;
   padding: 10px;
 }
+.content-board {
+  width: 70%;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  .board-title {
+      text-align: start;
+  }
+}
+
+@media screen and (max-width : 992px) {
+  .content-board {
+      width: 90%;
+  }
+}

@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import BoardList from "../../components/board/BoardList";
-import { listPost } from "../../modules/postList";
+import { listPost, changePage } from "../../modules/postList";
 import Pagination from '../../components/common/Pagination'
 
-function BoardListContainer({ listPost, page, result, error, loading }) {
-  useEffect(() => {
+const LIMIT = 10;
+
+function BoardListContainer({ listPost, changePage,  page, result, error, loading }) {
+  useEffect(async () => {
     const fn = async () => {
       try {
         await listPost(page);
@@ -25,6 +27,11 @@ function BoardListContainer({ listPost, page, result, error, loading }) {
       ) : (
         <>
           <BoardList list={result.list}></BoardList>
+          <Pagination
+            totalPage={parseInt(result.total % LIMIT == 0 ? result.total / LIMIT : result.total / LIMIT + 1)}
+            currentPage={page}
+            changePage={(num) => {changePage(num);}}
+          ></Pagination>
         </>
       )}
     </>
@@ -40,5 +47,6 @@ export default connect(
   }),
   {
     listPost,
+    changePage
   }
 )(BoardListContainer);

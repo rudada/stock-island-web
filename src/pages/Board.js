@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import BoardListPage from "./BoardListPage";
 import BoardDetailPage from "./BoardDetailPage";
 import BoardWritePage from "./BoardWritePage";
-import "./Board.scss";
 
 function Board({ match }) {
   return (

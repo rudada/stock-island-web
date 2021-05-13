@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { IoMdPerson } from "react-icons/io";
-import './App.css'
+import './App.scss'
 
 import Home from './pages/Home';
 import Board from './pages/Board';
