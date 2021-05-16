@@ -1,37 +1,47 @@
 import DatePicker from "react-datepicker";
-import React from "react";
+import React, { useState } from "react";
 import "../../../node_modules/react-datepicker/dist/react-datepicker.css";
 import "./DatePick.scss"
 
 function DatePick({ startDate, endDate, setStartDate, setEndDate }) {
+  const [start, setStart] = useState(startDate);
+  const [end, setEnd] = useState(endDate);
 
   const CustomInput = ({ value, onClick }) => (
-    <button className="datepick-input" onClick={onClick}>
+    <button className="datepick-btn" onClick={onClick}>
       {value}
     </button>
   );
+
+  const onSearch = () => {
+    setStartDate(start);
+    setEndDate(end);
+  }
   
   return (
     <div className="DatePick">
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        selectsStart
-        startDate={startDate}
-        endDate={endDate}
-        customInput={<CustomInput />}
-      />
-      <span className="dash">-</span>
-      <DatePicker
-        selected={endDate}
-        onChange={(date) => setEndDate(date)}
-        selectsEnd
-        startDate={startDate}
-        endDate={endDate}
-        minDate={startDate}
-        customInput={<CustomInput />}
-      />
-      <button className="submit">search</button>
+      <div className="picker">
+        <DatePicker
+          selected={start}
+          onChange={(date) => setStart(date)}
+          selectsStart
+          startDate={start}
+          endDate={end}
+          customInput={<CustomInput />}
+        />
+        <span className="dash"></span>
+        <DatePicker
+          selected={end}
+          onChange={(date) => setEnd(date)}
+          selectsEnd
+          startDate={start}
+          endDate={end}
+          minDate={start}
+          customInput={<CustomInput />}
+        />
+      </div>
+      
+      <button className="submit datepick-btn" onClick={onSearch}><i className="fas fa-search"></i></button>
     </div>
   );
 }

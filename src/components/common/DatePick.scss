@@ -1,18 +1,29 @@
 .DatePick {
-    background-color: #6c757d63;
-    display: inline-flex;
-    border-radius: 10px;
+    button:focus {
+        outline:none;
+    }
+    
+    .picker {
+        background-color: #6c757d63;
+        display: inline-flex;
+        border-radius: 15px;
+        padding: 3px;
+        .dash {
+            width: 10px;
+            height: 1px;
+            background: black;
+            align-self: center;
+        }
+    }
 
-    button {
+    .datepick-btn {
         border-style: none;
         background: none;
         color: black;
         outline: none;
     }
-    button:focus {
-        outline:none;
-    }
-    .dash {
-        color: black;
+
+    .submit {
+        margin-left: 10px;
     }
 }

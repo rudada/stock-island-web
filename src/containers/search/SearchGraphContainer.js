@@ -1,45 +1,67 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { priceSearch } from "../../modules/searchPrice";
 import SearchItemGraph from "../../components/search/SearchItemGraph";
 
-function SearchGraphContainer({ keyword }) {
-  const [graph, setGraph] = useState([]);
+function SearchGraphContainer({
+  priceSearch,
+  result,
+  error,
+  loading,
+  keyword,
+}) {
   const [startDate, setStart] = useState();
   const [endDate, setEnd] = useState();
 
-  useEffect(() => {
-    const today = new Date();
-    const threeMonthAgo = new Date(new Date().setMonth(today.getMonth() - 3));
-    setStart(threeMonthAgo);
-    setEnd(today);
+  const getDate = (date) => {
+    if(!date) return ``;
+    let month = date.getMonth() + 1;
+    month = month >= 10 ? month : "0" + month;
+    let day = date.getDate();
+    day = day >= 10 ? day : "0" + day;
+    return `${date.getFullYear()}${month}${day}`;
+  };
 
-    const data = [];
-    for (let i = 1; i < 101; i++) {
-      data.push({
-        date: new Date(new Date().setDate(today.getDate() - i)),
-        price: Math.floor(Math.random() * 50),
-      });
+  useEffect(async () => {
+    if (startDate == null || endDate == null) {
+      const today = new Date();
+      const threeMonthAgo = new Date(new Date().setMonth(today.getMonth() - 3));
+      setStart(threeMonthAgo);
+      setEnd(today);
     }
-    setGraph(data);
-  }, []);
+    await priceSearch(keyword, getDate(startDate), getDate(endDate));
+    
+  }, [startDate, endDate]);
 
   return (
     <>
-      {graph.length ? (
+      {error ? (
+        "error"
+      ) : !result || loading ? (
+        "loading"
+      ) : (
         <SearchItemGraph
-          graph={graph}
+          graph={result.data}
           startDate={startDate}
           endDate={endDate}
           setStartDate={(date) => setStart(date)}
           setEndDate={(date) => setEnd(date)}
         />
-      ) : (
-        "Loading"
       )}
     </>
   );
 }
 
-export default SearchGraphContainer;
+export default connect(
+  ({ searchPrice, loading }) => ({
+    result: JSON.parse(searchPrice.result),
+    error: searchPrice.error,
+    loading: loading["searchPrice/PRICE_SEARCH"],
+  }),
+  {
+    priceSearch,
+  }
+)(SearchGraphContainer);
 
 // constructor(props) {
 //   super(props);

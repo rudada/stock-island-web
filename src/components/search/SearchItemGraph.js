@@ -17,6 +17,7 @@ function ItemGraph({ data }) {
 
   useEffect(() => {
     const svg = select(svgRef.current);
+    svg.selectAll("*").remove();
 
     const xScale = scaleUtc() //x축 설정
       .domain(extent(data, (d) => d.date)) //x축 요소 범위
@@ -39,14 +40,18 @@ function ItemGraph({ data }) {
     const yAxis = (g) => g.call(axisLeft(yScale));
 
     svg
-      .select(".x-axis")
+      .append("g")
+      .attr("class", "x-axis")
       .style("transform", "translateY(310px)") //그래프 하단에 x축 그리기 위해
       .call(xAxis);
 
+    svg
+    .append("g")
+    .attr("class", "y-axis")
+    .style("transform", "translateX(-10px)")
+    .call(yAxis);
+
     svg.select(".x-axis").select(".domain").attr("stroke", "transparent");
-
-    svg.select(".y-axis").style("transform", "translateX(-10px)").call(yAxis);
-
     svg.select(".y-axis").select(".domain").attr("stroke", "transparent");
 
     const Area = area()
@@ -92,13 +97,10 @@ function ItemGraph({ data }) {
   );
 }
 
-function SearchItemGraph({
-  startDate,
-  endDate,
-  setStartDate,
-  setEndDate,
-  graph,
-}) {
+function SearchItemGraph({ startDate, endDate, setStartDate, setEndDate, graph }) {
+
+  let g =  graph.map((row) =>({'date': new Date(row.F_STOCK_TRANS_DATE), 'price': row.F_STOCK_DAY_CLOSING_PRICE}))
+
   return (
     <div className="SearchItemGraph">
       <div className="datepicker">
@@ -109,7 +111,7 @@ function SearchItemGraph({
           setEndDate={(date) => setEndDate(date)}
         />
       </div>
-      <ItemGraph data={graph}></ItemGraph>
+      <ItemGraph data={g}></ItemGraph>
     </div>
   );
 }
