@@ -38,7 +38,7 @@ export default function postList(state = initialState, action) {
         case LIST_POST_SUCCESS : 
             return {
                 ...state,
-                result: action.payload.body,
+                result: action.payload.body.data,
             };
         case LIST_POST_FAILURE : 
             return {

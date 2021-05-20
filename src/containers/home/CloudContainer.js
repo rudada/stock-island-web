@@ -10,8 +10,7 @@ function CloudContainer() {
 
   useEffect(async () => {
     const data = await getWordcloud()
-      .then((res) => res.data.body)
-      .then((res) => JSON.parse(res).data);
+      .then((res) => res.data.body.data.data)
 
     const words = data.map((row) => ({
       text: row["NAMED_ENTITY"],

@@ -1,5 +1,9 @@
 import client from './client';
 
+export const autoComplete = (keyword) => {
+    return client.get(`/search/${keyword}`)
+}
+
 export const getDetail = (company_cd) => {
     return client.get(`/company/${company_cd}`);
 }

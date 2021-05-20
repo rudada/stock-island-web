@@ -37,7 +37,7 @@ export default function postWrite(state = initialState, action) {
         case WRITE_POST_SUCCESS :
             return {
                 ...state,
-                post: action.payload,
+                post: action.payload.body,
             };
         case WRITE_POST_FAILURE :
             return {

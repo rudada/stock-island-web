@@ -41,7 +41,7 @@ function SearchGraphContainer({
         "loading"
       ) : (
         <SearchItemGraph
-          graph={result.data}
+          graph={result}
           startDate={startDate}
           endDate={endDate}
           setStartDate={(date) => setStart(date)}
@@ -54,7 +54,7 @@ function SearchGraphContainer({
 
 export default connect(
   ({ searchPrice, loading }) => ({
-    result: JSON.parse(searchPrice.result),
+    result: searchPrice.result,
     error: searchPrice.error,
     loading: loading["searchPrice/PRICE_SEARCH"],
   }),

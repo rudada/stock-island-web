@@ -31,7 +31,7 @@ export default function searchPrice(state = initialState, action) {
         case PRICE_SEARCH_SUCCESS : 
             return {
                 ...state,
-                result: action.payload.body,
+                result: action.payload.body.data,
             }
         case PRICE_SEARCH_FAILURE :
             return {

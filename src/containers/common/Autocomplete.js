@@ -2,6 +2,7 @@
 import React, { cloneElement } from 'react';
 import ReactDOM from 'react-dom';
 import request from 'axios';
+import {autoComplete} from '../../lib/api/search.js';
 
 const fD = ReactDOM.findDOMNode;
 
@@ -28,23 +29,17 @@ class Autocomplete extends React.Component {
         this._callAPI(keyword);
     }
 
-    _callAPI = (value) => {
+    _callAPI = async (value) => {
         const keyword = value ? value : `'%20'`;
-        const config = {
-            baseURL : `https://qmj5oql835.execute-api.ap-northeast-1.amazonaws.com/api/search/${keyword}`,
-            method : 'GET',
-        }
 
-        request(config)
-        .then(response => response.data)
-        .then(data => data.body)
-        .then(body => JSON.parse(body))
-        .then(data => {
-            this.setState({
-                filteredKeywords: data['search']
-            }, () => {})                                     //setState 함수의 비동기 성질 때문에 callback 함수를 넣어서 delay 막음
-        })
-        .catch(err => {console.log(err)})
+        const data = await autoComplete(keyword)
+        .then(response => response.data.body.data)
+        .then(data => data['search'])
+        .catch(err => {console.log(err)});
+
+        this.setState({
+            filteredKeywords: data
+        }, () => {})   
     }
 
     render() {

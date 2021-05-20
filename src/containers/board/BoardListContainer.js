@@ -10,7 +10,7 @@ function BoardListContainer({ listPost, changePage,  page, result, error, loadin
   useEffect(async () => {
     const fn = async () => {
       try {
-        await listPost(page);
+        await listPost(page * LIMIT);
       } catch (e) {
         console.log(e);
       }
@@ -41,7 +41,7 @@ function BoardListContainer({ listPost, changePage,  page, result, error, loadin
 export default connect(
   ({ postList, loading }) => ({
     page: postList.page,
-    result: JSON.parse(postList.result),
+    result: postList.result,
     error: postList.error,
     loading: loading["postList/LIST_POST"],
   }),
