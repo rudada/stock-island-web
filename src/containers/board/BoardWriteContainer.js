@@ -1,33 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import BoardWrite from "../../components/board/BoardWrite";
-import { writePost } from "../../modules/postWrite";
+import { writePost, updatePost } from "../../modules/postWrite";
 
-function BoardWriteContainer({ writePost, post, error, loading, history }) {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+function BoardWriteContainer({ writePost, updatePost, title, content, post, error, postId, loading, history }) {
 
-  const onPost = () => {
-    try {
-      writePost(title, content);
-    } catch (e) {
-      console.log(e);
-    }
+  useEffect(() =>{
+    if(error) {
+      console.log(error);
+    } else if(post) {
+      history.goBack();  
+    } 
+  }, [error, post])
+
+  const onPost = () => { 
+    if(postId) updatePost(postId, title, content);
+    else writePost(title, content);
   };
 
-  const onCancel = () => {
-    history.goBack();
-  };
+  const onCancel = () => { history.goBack(); };
 
   return (
     <BoardWrite
-      title={title}
-      content={content}
-      changeTitle={(title) => setTitle(title)}
-      changeContent={(content) => setContent(content)}
-      onPost={() => onPost()}
-      onCancel={() => onCancel()}
+      onPost={onPost}
+      onCancel={onCancel}
+      isEdit={!!postId}
     ></BoardWrite>
   );
 }
@@ -35,12 +33,16 @@ function BoardWriteContainer({ writePost, post, error, loading, history }) {
 export default withRouter(
   connect(
     ({ postWrite, loading }) => ({
+      title: postWrite.title,
+      content: postWrite.content,
       post: postWrite.post,
       error: postWrite.error,
+      postId: postWrite.postId,
       loading: loading["postWrite/WRITE_POST"],
     }),
     {
       writePost,
+      updatePost,
     }
   )(BoardWriteContainer)
 );

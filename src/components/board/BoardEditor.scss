@@ -1,6 +1,6 @@
 $bw-bg-color : rgba(28, 28, 28, 0.7);
 
-.BoardWrite {
+.BoardEditor {
     padding-top: 20px;
 
     textarea {
@@ -17,9 +17,5 @@ $bw-bg-color : rgba(28, 28, 28, 0.7);
 
     .content {
         height: 400px;
-    }
-
-    .submit {
-        margin: 5px;
     }
 }

@@ -1,8 +1,22 @@
 $pv-bg-color: rgba(28, 28, 28, 0.7);
 $pv-gradient: linear-gradient(to right, rgba(44,43,43,1) 0%,rgba(242,193,235,1) 69%,rgba(165,140,253,1) 100%);
 
-//layout
 .BoardDetail {
+    position: relative;
+    .buttons {
+        position: absolute;
+        top: -30px;
+        right: 0px;
+        text-align: right;
+        
+         * {
+            cursor: pointer;
+            margin-left: 5px;
+         }
+    }
+}
+//layout
+.PostDetail {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -18,8 +32,8 @@ $pv-gradient: linear-gradient(to right, rgba(44,43,43,1) 0%,rgba(242,193,235,1) 
 }
 
 //speech balloons
-.BoardDetail {
-    .post-content {
+.PostDetail {
+    .Post {
         width: 80%;
         position: relative;
         clear: both;
@@ -44,11 +58,11 @@ $pv-gradient: linear-gradient(to right, rgba(44,43,43,1) 0%,rgba(242,193,235,1) 
 
 
 
-.BoardDetail {
+.PostDetail {
     .post-userinfo {
         word-wrap: break-word;
     }
-    .post-content {
+    .Post {
         hr {
             height: 1px;
             background: $pv-gradient;
@@ -67,12 +81,12 @@ $pv-gradient: linear-gradient(to right, rgba(44,43,43,1) 0%,rgba(242,193,235,1) 
 }
 
 @media screen and (max-width : 992px) {
-    .BoardDetail {
+    .PostDetail {
         .column-1,
         .column-3 {
             flex: 0 0 0vw;
         }
-        .post-content {
+        .Post {
             min-width: none;
             max-width: 500px;
             width: -webkit-fill-available;

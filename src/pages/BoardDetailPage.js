@@ -6,7 +6,8 @@ import CommentEditContainer from '../containers/board/CommentEditContainer'
 function BoardDetailPage ({match}) {
     return (
         <>
-        <BoardDetailContainer></BoardDetailContainer>
+        <BoardDetailContainer post_id={match.params.post_id}></BoardDetailContainer>
+        <CommentContainer></CommentContainer>
         <CommentEditContainer></CommentEditContainer>
         </>
     );

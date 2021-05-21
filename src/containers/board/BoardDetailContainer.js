@@ -1,44 +1,65 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { withRouter } from "react-router";
+import { connect } from "react-redux";
+import { readPost, unloadPost } from "../../modules/postRead";
+import { setPost } from "../../modules/postWrite";
 import BoardDetail from "../../components/board/BoardDetail";
-import Comment from "../../components/board/Comment";
+import BoardButton from "../../components/common/BoardButton";
+import { removePost } from "../../lib/api/board";
 
-function BoardDetailContainer() {
+function BoardDetailContainer({
+  readPost,
+  unloadPost,
+  setPost,
+  post,
+  error,
+  loading,
+  post_id,
+  history
+}) {
+  useEffect(() => {
+    readPost(post_id);
+    return () => {
+      unloadPost();
+    };
+  }, [post_id]);
+
+  const onEdit = () => {
+    setPost(post[0], post_id);
+    history.push('/board/write');
+  }
+
+  const onRemove = async () => {
+    try {
+      await removePost({post_id});
+      history.push('/board');
+    } catch (e) {console.log(e);}
+  }
+
   return (
     <>
-      <BoardDetail post={post} />
-      <Comment comments={comments}></Comment>
+      {error ? (
+        "error"
+      ) : !post || loading ? (
+        "loading"
+      ) : (
+        <BoardDetail
+          post={post[0]}
+          editButton={<i className="fas fa-eraser fa-lg" onClick={onEdit}></i>}
+          removeButton={<i className="far fa-trash-alt fa-lg" onClick={onRemove}></i>}
+        />
+      )}
     </>
   );
 }
 
-const post = {
-  id: 1,
-  user: 123,
-  title: "제목",
-  content: "나 주식 어려워~!!!!!! 누가 대신해조~!!",
-  date: "2021-03-17",
-  views: 1,
-  profileImage: "https://mdbootstrap.com/img/new/standard/city/041.jpg",
-};
-const comments = [
-  {
-    id: 1,
-    user: "user1",
-    content: "Comment1",
-    date: "2021-03-17",
-  },
-  {
-    id: 2,
-    user: "user2",
-    content: "Comment2",
-    date: "2021-03-17",
-  },
-  {
-    id: 3,
-    user: "user4",
-    content: "Comment3",
-    date: "2021-03-17",
-  },
-];
-
-export default BoardDetailContainer;
+export default withRouter(
+  connect(
+  ({ postRead, loading }) => ({
+    post: postRead.post,
+    error: postRead.error,
+    loading: loading["postRead/READ_POST"],
+  }),
+  { readPost, unloadPost, setPost }
+)(BoardDetailContainer)
+);

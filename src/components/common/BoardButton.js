@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: buttonColor,
         border: "none",
         outline: "none",
+        margin: "5px",
+        minWidth: "75px",
     }
   }));
   

@@ -11,7 +11,7 @@ function Board({ match }) {
       <h2 className="board-title">게시판</h2>
       <Route exact path={match.path} component={BoardListPage}></Route>
       <Route
-        path={`${match.path}/detail/:postId`}
+        path={`${match.path}/detail/:post_id`}
         component={BoardDetailPage}
       ></Route>
       <Route path={`${match.path}/write`} component={BoardWritePage}></Route>
